@@ -1,0 +1,11 @@
+Model Information:
+* title:	NeonRoad endless loop
+* source:	https://sketchfab.com/3d-models/neonroad-endless-loop-425480c926144a3395b9cc8f672a8db4
+* author:	Marcel van Duijn (https://sketchfab.com/MarcelvanDuijn)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "NeonRoad endless loop" (https://sketchfab.com/3d-models/neonroad-endless-loop-425480c926144a3395b9cc8f672a8db4) by Marcel van Duijn (https://sketchfab.com/MarcelvanDuijn) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
