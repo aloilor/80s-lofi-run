@@ -4,6 +4,9 @@
 scene = new THREE.Scene();
 scene.background = new THREE.Color('black');
 
+// INITIALIZING THE LOADER
+var loader = new THREE.GLTFLoader();
+
 // CAMERA INITIALIZATION
 const fov = 45;
 const aspect = 2;  // the canvas default
@@ -15,8 +18,8 @@ camera.position.z = 26;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
 
+// RENDERER INITIALIZATION
 renderer = new THREE.WebGLRenderer( { antialias: true} );
-
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
@@ -37,7 +40,7 @@ const colorD = 0xFF0000;
 const intensityD = 2.0;
 const dirLight = new THREE.DirectionalLight(colorD, intensityD);
 dirLight.position.set(0, 5.0, -200);
-dirLight.target.position.set(0, 0, 20);
+// dirLight.target.position.set(0, 0, 20);
 dirLight.castShadow = true;
 scene.add(dirLight);
 scene.add(dirLight.target);
@@ -46,8 +49,6 @@ const helper = new THREE.DirectionalLightHelper(dirLight);
 scene.add(helper);
 
 
-// INITIALIZING THE LOADER
-var loader = new THREE.GLTFLoader();
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
@@ -61,7 +62,6 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
     });
     return lines;
 }
-
 
 function animate() {
     requestAnimationFrame( animate );
