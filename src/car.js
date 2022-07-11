@@ -1,5 +1,7 @@
+let sun;
+
 loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( gltf ) {
-    car1 = gltf.scene;
+    const car1 = gltf.scene;
     car1.scale.multiplyScalar(0.19); 
     car1.name = "car1";
     car1.castShadow = true;
@@ -10,10 +12,11 @@ loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( g
     //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
 
     dirLight.target = car1;
+    
 
     car1.rotateY(THREE.Math.degToRad(180));
     scene.add( car1 );
-
+    
     // VISUALIZAING THE HIERARCHY OF THE CAR
     console.log(dumpObject(car1).join('\n'));
 });

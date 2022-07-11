@@ -67,6 +67,8 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 
 function animate() {
     requestAnimationFrame( animate );
+    //camera.position.z -= 0.1;
+    //car1.position.z -= 0.1;
 
     renderer.render( scene, camera );
 };
