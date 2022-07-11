@@ -18,6 +18,8 @@ camera.position.z = 26;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
 
+scene.add( camera );
+
 // RENDERER INITIALIZATION
 renderer = new THREE.WebGLRenderer( { antialias: true} );
 renderer.setPixelRatio( window.devicePixelRatio );
