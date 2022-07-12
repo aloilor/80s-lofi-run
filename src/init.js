@@ -1,3 +1,6 @@
+// import * from "./bitcoins.js";
+
+
 // INITIALIZING THE SCENE AND OTHER USEFUL THINGS SUCH AS LIGHT AND LOADERS
 //SCENE INITIALIZATION
 scene = new THREE.Scene();
@@ -12,8 +15,8 @@ const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.x = 1.2;
-camera.position.z = 25.8;
+camera.position.x = 0.0;
+camera.position.z = 26.5;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
 
@@ -31,7 +34,7 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 // INITIALIZING POST PROCESSING FILTERS
-const renderScene = new THREE.RenderPass(scene, camera);
+//const renderScene = new THREE.RenderPass(scene, camera);
 //const composer = new THREE.EffectComposer(renderer);
 //composer.addPass(renderScene);
 
@@ -71,7 +74,6 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 function animate() {
     
     renderer.render( scene, camera );
-
 
     requestAnimationFrame( animate );
     //camera.position.z -= 0.2;
