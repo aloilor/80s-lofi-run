@@ -1,5 +1,3 @@
-let sun;
-
 loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( gltf ) {
     car1 = gltf.scene;
     car1.scale.multiplyScalar(0.19); 

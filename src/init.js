@@ -1,5 +1,4 @@
 // INITIALIZING THE SCENE AND OTHER USEFUL THINGS SUCH AS LIGHT AND LOADERS
-
 //SCENE INITIALIZATION
 scene = new THREE.Scene();
 scene.background = new THREE.Color('black');
@@ -14,9 +13,14 @@ const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.x = 1.2;
-camera.position.z = 26;
+camera.position.z = 26.1;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
+
+// INITIALIZING POST PROCESSING FILTERS
+//const renderScene = new RenderPass(scene, camera);
+//const composer = new EffectComposer(renderer);
+//composer.addPass(renderScene);
 
 scene.add( camera );
 
@@ -33,7 +37,7 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 // AMBIENT LIGHT
 const colorA = 0xffdbdb;
-const intensityA = 2.5;
+const intensityA = 3.0;
 const ambLight = new THREE.AmbientLight(colorA, intensityA);
 scene.add(ambLight);
 
@@ -41,7 +45,7 @@ scene.add(ambLight);
 const colorD = 0xFF0000;
 const intensityD = 2.0;
 const dirLight = new THREE.DirectionalLight(colorD, intensityD);
-dirLight.position.set(0, 5.0, -200);
+dirLight.position.set(0, 5.0, -500);
 // dirLight.target.position.set(0, 0, 20);
 dirLight.castShadow = true;
 scene.add(dirLight);
@@ -66,11 +70,14 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 }
 
 function animate() {
-    requestAnimationFrame( animate );
-    camera.position.z -= 0.1;
-    car1.position.z -= 0.1;
-
+    
     renderer.render( scene, camera );
+
+
+    requestAnimationFrame( animate );
+    //camera.position.z -= 0.1;
+    //car1.position.z -= 0.1;
+
 };
 
 animate();

@@ -1,0 +1,253 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 482,
+      "max": [
+        0.9997599720954895,
+        0.9997599720954895,
+        0.05000000074505806
+      ],
+      "min": [
+        -0.9997599720954895,
+        -0.9997699856758118,
+        -0.05000000074505806
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 5784,
+      "componentType": 5126,
+      "count": 482,
+      "max": [
+        0.7126294374465942,
+        0.7126291990280151,
+        0.7014291286468506
+      ],
+      "min": [
+        -0.7126291990280151,
+        -0.7126291990280151,
+        -0.7014290690422058
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 482,
+      "max": [
+        0.701320230960846,
+        0.999906599521637,
+        0.7130830883979797,
+        1.0
+      ],
+      "min": [
+        -0.7013210654258728,
+        -0.9995696544647217,
+        -0.7126771211624146,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 482,
+      "max": [
+        0.9480000138282776,
+        0.9809399843215942
+      ],
+      "min": [
+        0.006539999973028898,
+        0.027650000527501106
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 1428,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Jarcelo Design (https://sketchfab.com/jarcelodesing)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bitcoin-btc-gold-lowpoly-c9594cdda8974ef2a1eb48275c2493aa",
+      "title": "Bitcoin BTC Gold | Lowpoly"
+    },
+    "generator": "Sketchfab-12.78.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 5712,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3856,
+      "byteOffset": 5712,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11568,
+      "byteOffset": 9568,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7712,
+      "byteOffset": 21136,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 28848,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Material_BTC_baseColor.png"
+    },
+    {
+      "uri": "textures/Material_BTC_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Material_BTC",
+      "normalTexture": {
+        "index": 1,
+        "scale": 0.43340234329873717
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.4881239017687224,
+        "roughnessFactor": 0.4394825164620689
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "C��rculo B��zier.001_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        4.440892098500626e-16,
+        0.0,
+        -1.0,
+        0.0,
+        -1.0,
+        1.6081226229577301e-16,
+        -4.4408920985006257e-16,
+        0.0,
+        1.6081226229577292e-16,
+        1.0,
+        0.0,
+        0.0,
+        0.44759508967399597,
+        2.8756768559283497e-19,
+        1.9987049102783203,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.22315,
+        -0.77555,
+        1.01648,
+        1.0
+      ],
+      "name": "C��rculo B��zier.001"
+    },
+    {
+      "mesh": 0,
+      "name": "C��rculo B��zier.001_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}
