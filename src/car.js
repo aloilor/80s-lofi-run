@@ -6,11 +6,8 @@ loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( g
     car1.receiveShadow = true;
     car1.position.setX(0.0);
     car1.position.setY(0.0);
-    car1.position.setZ(22.0);
+    car1.position.setZ(22.2);
     //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
-
-    dirLight.target = car1;
-    
 
     car1.rotateY(THREE.Math.degToRad(180));
     scene.add( car1 );

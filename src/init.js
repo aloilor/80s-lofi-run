@@ -1,7 +1,7 @@
 // INITIALIZING THE SCENE AND OTHER USEFUL THINGS SUCH AS LIGHT AND LOADERS
 //SCENE INITIALIZATION
 scene = new THREE.Scene();
-scene.background = new THREE.Color('black');
+//scene.background = new THREE.Color('black');
 
 // INITIALIZING THE LOADER
 var loader = new THREE.GLTFLoader();
@@ -13,14 +13,9 @@ const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.x = 1.2;
-camera.position.z = 26.1;
+camera.position.z = 25.8;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
-
-// INITIALIZING POST PROCESSING FILTERS
-//const renderScene = new RenderPass(scene, camera);
-//const composer = new EffectComposer(renderer);
-//composer.addPass(renderScene);
 
 scene.add( camera );
 
@@ -35,25 +30,29 @@ renderer.toneMappingExposure = Math.pow( 0.94, 5.0 );
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
+// INITIALIZING POST PROCESSING FILTERS
+const renderScene = new THREE.RenderPass(scene, camera);
+//const composer = new THREE.EffectComposer(renderer);
+//composer.addPass(renderScene);
+
 // AMBIENT LIGHT
 const colorA = 0xffdbdb;
-const intensityA = 3.0;
+const intensityA = 3.5;
 const ambLight = new THREE.AmbientLight(colorA, intensityA);
 scene.add(ambLight);
 
 // DIRECTIONAL LIGHT
 const colorD = 0xFF0000;
-const intensityD = 2.0;
+const intensityD = 4.0;
 const dirLight = new THREE.DirectionalLight(colorD, intensityD);
-dirLight.position.set(0, 5.0, -500);
-// dirLight.target.position.set(0, 0, 20);
+dirLight.position.set(0, 10.0, -720);
+dirLight.target.position.set(0, 0, 25);
 dirLight.castShadow = true;
 scene.add(dirLight);
 scene.add(dirLight.target);
 //HELPER TO VISUALIZE OUR DIRCETIONAL LIGHT
 const helper = new THREE.DirectionalLightHelper(dirLight);
 scene.add(helper);
-
 
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
@@ -75,8 +74,8 @@ function animate() {
 
 
     requestAnimationFrame( animate );
-    //camera.position.z -= 0.1;
-    //car1.position.z -= 0.1;
+    //camera.position.z -= 0.2;
+    //car1.position.z -= 0.2;
 
 };
 
