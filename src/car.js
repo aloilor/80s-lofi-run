@@ -18,3 +18,17 @@ loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( g
     // VISUALIZAING THE HIERARCHY OF THE CAR
     console.log(dumpObject(car1).join('\n'));
 });
+
+frontWheel = document.getElementById('Front_Wheel_Llanta')
+backWheel = document.getElementById('Back_Wheel_Llanta')
+frontTire = document.getElementById('Tire_Front')
+backTire = document.getElementById('Tire_Back')
+
+var groupFront = new TWEEN.Group()
+var groupBack = new TWEEN.Group()
+
+var tweenFront = new TWEEN.Tween({x: 1}, groupFront).to({x: 10}, 100).start()
+var tweenBack = new TWEEN.Tween({x: 1}, groupBack).to({x: 10}, 100).start()
+
+groupFront.update() // only updates tweenA
+groupBack.update() // only updates tweenB
