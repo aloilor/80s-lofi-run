@@ -16,7 +16,7 @@ const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.x = 0.0;
-camera.position.z = 26.5;
+camera.position.z = 0;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
 
@@ -61,7 +61,8 @@ scene.add(helper);
 // LOADING CAR MODEL 
 var carPosX = 0.0;
 var carPosY = 0.0;
-var carPosZ = 22.2;
+var carPosZ = -4;
+var car1;
 loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( gltf ) {
     car1 = gltf.scene;
     car1.scale.multiplyScalar(0.19); 
@@ -84,7 +85,7 @@ loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( g
 var bitcoin;
 var bitPosX = coinMid;
 var bitPosY = 0.05;
-var bitPosZ = 21.0;
+var bitPosZ = -5;
 loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
     bitcoin = gltf.scene;
     bitcoin.scale.multiplyScalar(0.13); 
@@ -118,9 +119,12 @@ function animate() {
     requestAnimationFrame( animate );
 
     if (bitcoin) random_bitcoin_spawn(bitcoin);
-
-    //camera.position.z -= 0.2;
-    //car1.position.z -= 0.2;
+    if (car1 && camera.position.z > -715){
+      camera.position.z -= 0.12;
+      car1.position.z -= 0.12;
+      bitcoin_collision(car1);
+    }
+    
 
 };
 
