@@ -1,5 +1,5 @@
 
-var max_distance = 30; // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOINS WILL SPAWN, TO KEEP CLEAN AND FAST THE GAME
+var max_distance = 100; // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOINS WILL SPAWN, TO KEEP CLEAN AND FAST THE GAME
 var size = 3;
 var bitcoins = new Array();
 var gap_between_coins = 1;
@@ -7,7 +7,7 @@ var gap_between_groups = 3;
 var coinMid = -0.17; // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
 var offset = 0.5;                
 var group = 3; // THE BITCOINS WILL ALWAYS SPAWN IN GROUP OF 3
-var start = carPosZ + 5; // START POSITION FROM WHICH THE COINS WILL START TO SPAWN
+var start = 22.2 - 4; // START POSITION FROM WHICH THE COINS WILL START TO SPAWN
 
 var poss_x_positions = [        // USEFUL ARRAY TO KEEP TRACK OF THE X POSITIONS IN WHICH THE COINS CAN SPAWN
     coinMid - 2*offset,
@@ -18,45 +18,29 @@ var poss_x_positions = [        // USEFUL ARRAY TO KEEP TRACK OF THE X POSITIONS
 ];
 
 
-// LOAD THE BITCOIN MODEL 
-var bitcoin;
-var bitPosX = coinMid;
-var bitPosY = 0.05;
-var bitPosZ = 21.0;
-
-loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
-    bitcoin = gltf.scene;
-    bitcoin.scale.multiplyScalar(0.13); 
-    bitcoin.position.setX(bitPosX);
-    bitcoin.position.setY(bitPosY);
-    bitcoin.position.setZ(bitPosZ);
-    bitcoin.name = "bitcoin"
-    bitcoin.castShadow = true;
-    bitcoin.receiveShadow = true;
-    //bitcoin.rotateY(THREE.Math.degToRad(180));
-    scene.add(bitcoin);
-    console.log(dumpObject(bitcoin).join('\n'));
-})
-
 // THE BITCOINS WILL ALWAYS SPAWN IN GROUP OF 3
-function bitcoin_straight_line(start, bitcoin){
+function bitcoin_straight_line(bitcoin){
     var x = poss_x_positions[ Math.floor(Math.random() * poss_x_positions.length) ];
-    console.log(x)
     for ( i = 0; i < group; i++){
         var clone = bitcoin.clone();
         clone.position.set(x, bitPosY, start);
-        start += gap_between_coins;
         bitcoins.push(clone);
-        scene.add(clone);      
+        scene.add(clone);    
+        start -= gap_between_coins;
     }
-    start += gap_between_groups;
+    start -= gap_between_groups;
 }
 
+// FUNCTION TO RANDOMLY SPAWN BITCOINS
 function random_bitcoin_spawn(bitcoin){
-
-
-
-
+    while(Math.abs(start) < Math.abs(camera.position.z) + max_distance){
+        bitcoin_straight_line(bitcoin);
+    } 
 }
 
+// CLEANUP FUNCTION - TO REMOVE UNUSED BITCOINS (THE ONES WE ALREADY SURPASSED) FROM THE SCENE
+// AND TO KEEP EVERYTHING FAST AND CLEAN
+function bitcoin_free(){
+
+}
 

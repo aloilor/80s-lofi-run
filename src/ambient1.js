@@ -4,5 +4,5 @@ loader.load( '../models/maps/80s-style/neonroad_endless_loop/scene.gltf', functi
     scene.add( ambient );
     
     //VISUALIZING THE HIERARCHY OF OUR ENVIRONMENT 
-    console.log(dumpObject(ambient).join('\n'));
+    //console.log(dumpObject(ambient).join('\n'));
 });
