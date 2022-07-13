@@ -1,34 +1,19 @@
-loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( gltf ) {
-    car1 = gltf.scene;
-    car1.scale.multiplyScalar(0.19); 
-    car1.name = "car1";
-    car1.castShadow = true;
-    car1.receiveShadow = true;
-    car1.position.setX(0.0);
-    car1.position.setY(0.0);
-    car1.position.setZ(22.0);
-    //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
+function rotateWheelTire(car1) {
 
-    dirLight.target = car1;
+    frontWheel = car1.getObjectByName('Front_Wheel_Llanta_Material009_0')
+    backWheel = car1.getObjectByName('Back_Wheel_Llanta_Material009_0')
+    frontTire = car1.getObjectByName('Tire_Front_Material010_0')
+    backTire = car1.getObjectByName('Tire_Back_Material010_0')
+    car = car1.getObjectByName('RootNode')
     
+    var frontWheelTween = new TWEEN.Tween(frontWheel).to({x: 20000}, 1000).start()
+    var backWheelTween = new TWEEN.Tween(backWheel).to({x: 20000}, 1000).repeat(Infinity).start()
+    var frontTireTween = new TWEEN.Tween(frontTire).to({x: 20000}, 1000).start()
+    var backTireTween = new TWEEN.Tween(backTire).to({x: 20000}, 1000).repeat(Infinity).start()
+    var carTween = new TWEEN.Tween(car.position).to({x: 20000}, 1000).start()
 
-    car1.rotateY(THREE.Math.degToRad(180));
-    scene.add( car1 );
-    
-    // VISUALIZAING THE HIERARCHY OF THE CAR
-    console.log(dumpObject(car1).join('\n'));
-});
-
-frontWheel = document.getElementById('Front_Wheel_Llanta')
-backWheel = document.getElementById('Back_Wheel_Llanta')
-frontTire = document.getElementById('Tire_Front')
-backTire = document.getElementById('Tire_Back')
-
-var groupFront = new TWEEN.Group()
-var groupBack = new TWEEN.Group()
-
-var tweenFront = new TWEEN.Tween({x: 1}, groupFront).to({x: 10}, 100).start()
-var tweenBack = new TWEEN.Tween({x: 1}, groupBack).to({x: 10}, 100).start()
-
-groupFront.update() // only updates tweenA
-groupBack.update() // only updates tweenB
+    frontWheelTween.update()
+    frontTireTween.update()
+    TWEEN.update()
+    carTween.update()
+}

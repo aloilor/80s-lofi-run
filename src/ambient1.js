@@ -1,3 +1,5 @@
+var loader = new THREE.GLTFLoader();
+
 loader.load( '../models/maps/80s-style/neonroad_endless_loop/scene.gltf', function ( gltf ) {
     ambient = gltf.scene;
     ambient.name = "ambient1";

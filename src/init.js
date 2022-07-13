@@ -6,13 +6,36 @@ scene.background = new THREE.Color('black');
 // INITIALIZING THE LOADER
 var loader = new THREE.GLTFLoader();
 
+// LOAD CAR
+var car1;
+loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( gltf ) {
+  car1 = gltf.scene;
+  car1.scale.multiplyScalar(0.19); 
+  car1.name = "car1";
+  car1.castShadow = true;
+  car1.receiveShadow = true;
+  car1.position.setX(0.0);
+  car1.position.setY(0.0);
+  car1.position.setZ(22.0);
+  //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
+
+  dirLight.target = car1;
+  
+
+  car1.rotateY(THREE.Math.degToRad(180));
+  scene.add( car1 );
+  
+  // VISUALIZAING THE HIERARCHY OF THE CAR
+  console.log(dumpObject(car1).join('\n'));
+});
+
 // CAMERA INITIALIZATION
 const fov = 45;
 const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.x = 1.2;
+camera.position.x = 2;
 camera.position.z = 26.1;
 // camera.position.z = -165; // HELPFUL DEBUGGER
 camera.position.y = 1.1;
@@ -78,6 +101,10 @@ function animate() {
     //camera.position.z -= 0.1;
     //car1.position.z -= 0.1;
 
+    if(car1){
+      rotateWheelTire(car1);
+    }
+    
 };
 
 animate();

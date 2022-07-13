@@ -2,6 +2,8 @@ var max_distance = 30;
 var size = 3;
 var bitcoins = new Array();
 
+var loader = new THREE.GLTFLoader();
+
 loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
     bitcoin = gltf.scene;
     bitcoin.scale.multiplyScalar(0.13); 
