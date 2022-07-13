@@ -96,10 +96,31 @@ loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
     bitcoin.castShadow = true;
     bitcoin.receiveShadow = true;
     //bitcoin.rotateY(THREE.Math.degToRad(180));
-    scene.add(bitcoin);
+    //scene.add(bitcoin);
     //console.log(dumpObject(bitcoin).join('\n'));
+})
+
+var nitro;
+var nitroPosX = 0;
+var nitroPosY = 0.05;
+var nitroPosZ = -6;
+loader.load( '../models/other entities/nitrogen_bottle/scene.gltf', function ( gltf ) {
+  nitro = gltf.scene;
+  nitro.scale.multiplyScalar(0.01); 
+  nitro.position.setX(nitroPosX);
+  nitro.position.setY(nitroPosY);
+  nitro.position.setZ(nitroPosZ);
+  nitro.name = "nitro"
+  nitro.castShadow = true;
+  nitro.receiveShadow = true;
+  //bitcoin.rotateY(THREE.Math.degToRad(180));
+  //scene.add(nitro);
+  //console.log(dumpObject(bitcoin).join('\n'));
 
 })
+
+
+
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
@@ -119,9 +140,10 @@ function animate() {
     requestAnimationFrame( animate );
 
     if (bitcoin) random_bitcoin_spawn(bitcoin);
+    if (nitro) random_nitro_spawn(nitro);
     if (car1 && camera.position.z > -715){
-      camera.position.z -= 0.12;
-      car1.position.z -= 0.12;
+      //camera.position.z -= 0.12;
+      //car1.position.z -= 0.12;
       bitcoin_collision(car1);
     }
     
