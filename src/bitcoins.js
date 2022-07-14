@@ -61,7 +61,7 @@ function bitcoin_collision(car){
             scene.remove(bitcoins[i]);
             //bitcoins.splice(bitcoins.indexOf(bitcoins[i]), 1);
             score += 1;
-            console.log(score);
+            //console.log(score);
         }
     }
 }
