@@ -142,8 +142,8 @@ function animate() {
     if (bitcoin) random_bitcoin_spawn(bitcoin);
     if (nitro) random_nitro_spawn(nitro);
     if (car1 && camera.position.z > -715){
-      camera.position.z -= 0.12;
-      car1.position.z -= 0.12;
+      //camera.position.z -= 0.12;
+      //car1.position.z -= 0.12;
       bitcoin_collision(car1);
       nitro_collision(car1);
     }

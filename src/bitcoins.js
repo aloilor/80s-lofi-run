@@ -69,8 +69,12 @@ function bitcoin_collision(car){
 
 function check_bitcoin (obj) {  // USEFUL FUNCTION TO CHECK IF WE ARE GOING TO SPAWN AN OBJECT obj WHERE 
                                 // THERE ALREADY IS A COIN
-                                // RETURNS TRUE IF THERE'S ALREADY A COIN
-
-
-
+                                // RETURNS TRUE IF THERE'S ALREADY A COIN AND FALSE OTHERWISE
+    for (i = 0; i < bitcoins.length; i++){
+        if (bitcoins[i].position.x == obj.position.x+coinMid && Math.floor(Math.abs(bitcoins[i].position.z)) == Math.floor(Math.abs(obj.position.z+0))){
+            return true;
+        }
+    }
+    return false;
+    
 }
