@@ -56,19 +56,6 @@ const helper = new THREE.DirectionalLightHelper(dirLight);
 scene.add(helper);
 
 
-// FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
-function dumpObject(obj, lines = [], isLast = true, prefix = '') {
-    const localPrefix = isLast ? '└─' : '├─';
-    lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
-    const newPrefix = prefix + (isLast ? '  ' : '│ ');
-    const lastNdx = obj.children.length - 1;
-    obj.children.forEach((child, ndx) => {
-      const isLast = ndx === lastNdx;
-      dumpObject(child, lines, isLast, newPrefix);
-    });
-    return lines;
-}
-
 function animate() {
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
@@ -81,8 +68,4 @@ function animate() {
       bitcoin_collision(car1);
       nitro_collision(car1);
     }
-    
-
-};
-
-animate();
+}; animate();

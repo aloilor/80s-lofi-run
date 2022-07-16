@@ -1,6 +1,6 @@
 var offset = 0.5;           // OFFSET BETWEEN THE 5 TRACKS OF THE ROAD
 
-var coinMid = -0.17; // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
+var coinMid = -0.17;        // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
 
 
 var score = 0;              // PLAYER SCORE -- IT WILL INCREMENT EVERY TIME THE PLAYER GETS A BITCOIN 
@@ -10,3 +10,17 @@ var invincible = false;     // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE
 var max_distance = 70;      // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOINS WILL SPAWN, 
                             // TO KEEP CLEAN AND FAST THE GAME
 
+
+
+// FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
+function dumpObject(obj, lines = [], isLast = true, prefix = '') {
+    const localPrefix = isLast ? '└─' : '├─';
+    lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
+    const newPrefix = prefix + (isLast ? '  ' : '│ ');
+    const lastNdx = obj.children.length - 1;
+    obj.children.forEach((child, ndx) => {
+      const isLast = ndx === lastNdx;
+      dumpObject(child, lines, isLast, newPrefix);
+    });
+    return lines;
+}
