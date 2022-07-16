@@ -1,5 +1,7 @@
 var offset = 0.5;           // OFFSET BETWEEN THE 5 TRACKS OF THE ROAD
 
+var coinMid = -0.17; // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
+
 
 var score = 0;              // PLAYER SCORE -- IT WILL INCREMENT EVERY TIME THE PLAYER GETS A BITCOIN 
 

@@ -4,7 +4,6 @@ var size = 3;
 var bitcoins = new Array();
 var gap_between_coins = 1;
 var gap_between_groups = 3;
-var coinMid = -0.17; // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
 var group = 3; // THE BITCOINS WILL ALWAYS SPAWN IN GROUP OF 3
 
 var poss_x_bit_pos = [        // USEFUL ARRAY TO KEEP TRACK OF THE X POSITIONS IN WHICH THE COINS CAN SPAWN
