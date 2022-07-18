@@ -10,14 +10,14 @@ var loader = new THREE.GLTFLoader();
 var car1;
 loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
   car1 = gltf.scene;
-  car1.scale.multiplyScalar(0.50); 
+  car1.scale.multiplyScalar(0.30); 
   car1.name = "car1";
   car1.castShadow = true;
   car1.receiveShadow = true;
   car1.position.setX(0.0);
   car1.position.setY(0.1);
   car1.position.setZ(22.0);
-  //car1.rotation.y = Math.PI / 1.5;
+  car1.rotation.y = Math.PI / 10;
   //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
 
   dirLight.target = car1;
@@ -25,7 +25,7 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
 
   car1.rotateY(THREE.Math.degToRad(180));
   scene.add( car1 );
-  
+
   // VISUALIZAING THE HIERARCHY OF THE CAR
   console.log(dumpObject(car1).join('\n'));
 });
@@ -36,10 +36,10 @@ const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.x = 2;
-camera.position.z = 26.1;
+camera.position.x = 0;
+camera.position.z = 28;
 // camera.position.z = -165; // HELPFUL DEBUGGER
-camera.position.y = 1.1;
+camera.position.y = 1.5;
 
 // INITIALIZING POST PROCESSING FILTERS
 //const renderScene = new RenderPass(scene, camera);
@@ -97,13 +97,13 @@ function animate() {
     
     renderer.render( scene, camera );
 
-
     requestAnimationFrame( animate );
-    //camera.position.z -= 0.1;
-    //car1.position.z -= 0.1;
-
+    camera.position.z -= 0.12;
+    
     if(car1){
-      rotateWheelTire(car1);
+      car1.position.z -= 0.12;
+      rotateWheel(car1);
+      TWEEN.update();
     }  
     
 };

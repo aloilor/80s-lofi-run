@@ -1,4 +1,4 @@
-function rotateWheelTire(car1) {
+function rotateWheel(car1) {
 
     // IMPORT OBJECT
 
@@ -22,13 +22,27 @@ function rotateWheelTire(car1) {
     backWheelLeft.rotateOnAxis( backAxis, Math.PI / 180 );
     backtWheelRight.rotateOnAxis( backAxis, Math.PI / 180 );
 
-    //var groupFrontWheelTire = {frontWheel, frontTire};
-    //var groupBackWheelTire = {backWheel, backTire};
-    
-    //var tweenFrontWheelTire = new TWEEN.Tween(frontWheel.rotation).to({y: 1 }, 10).repeat(Infinity).start()
-    //var tweenBackWheelTire = new TWEEN.Tween(groupBackWheelTire.rotation).to({y: -(90 * Math.PI / 180)}, 1).start()
-
-    //tweenFrontWheelTire.update()
-    //tweenBackWheelTire.update()
-
 }
+
+// CAR MOVEMENT
+
+document.addEventListener("keydown", onDocumentKeyDown, false);
+var keyFlag = true;
+function onDocumentKeyDown(event) {
+var keyCode = event.which;
+car = car1.getObjectByName('root');
+    // left
+if (keyCode == 65 && keyFlag) {
+    console.log('sx');
+    keyFlag = false;
+    new TWEEN.Tween(car.position).to({x:car.position.x + 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
+    // right
+} else if (keyCode == 68 && keyFlag) {
+    console.log('dx');
+    keyFlag = false;
+    new TWEEN.Tween(car.position).to({x:car.position.x - 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
+    // space
+} else if (keyCode == 32) {
+    console.log('space');
+}
+};
