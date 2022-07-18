@@ -77,5 +77,7 @@ loader.load( '../models/maps/80s-style/neonroad_endless_loop/scene.gltf', functi
 });
 
 
+// LOADING FENCE MODEL 
+
 
 
