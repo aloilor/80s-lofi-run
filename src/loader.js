@@ -3,7 +3,7 @@ var loader = new THREE.GLTFLoader();
 
 // LOADING CAR MODEL 
 var carPosX = 0.0;
-var carPosY = 0.0;
+var carPosY = 0.1;
 var carPosZ = -5;
 // LOAD CAR
 var car1;

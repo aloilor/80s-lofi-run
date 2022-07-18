@@ -12,10 +12,10 @@ const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.x = 1.0;
-camera.position.z = -3;
+camera.position.x = 0.5;
+camera.position.z = -1.75;
 // camera.position.z = -165; // HELPFUL DEBUGGER
-camera.position.y = 0.5;
+camera.position.y = 1;
 
 scene.add( camera );
 
@@ -52,7 +52,7 @@ scene.add(dirLight);
 scene.add(dirLight.target);
 //HELPER TO VISUALIZE OUR DIRCETIONAL LIGHT
 const helper = new THREE.DirectionalLightHelper(dirLight);
-scene.add(helper);
+//scene.add(helper);
 
 
 function animate() {
@@ -62,8 +62,8 @@ function animate() {
     if (bitcoin) random_bitcoin_spawn(bitcoin);
     if (nitro) random_nitro_spawn(nitro);
     if (car1 && camera.position.z > -715){
-      //camera.position.z -= 0.12;
-      //car1.position.z -= 0.12;
+      //camera.position.z -= 0.07;
+      //car1.position.z -= 0.07;
       rotateWheel(car1);
       TWEEN.update();
       bitcoin_collision(car1);

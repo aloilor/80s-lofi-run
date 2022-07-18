@@ -7,9 +7,9 @@ var gap_between_groups = 3;
 var group = 3; // THE BITCOINS WILL ALWAYS SPAWN IN GROUP OF 3
 
 var poss_x_bit_pos = [        // USEFUL ARRAY TO KEEP TRACK OF THE X POSITIONS IN WHICH THE COINS CAN SPAWN
-    coinMid - 2*offset,
+    coinMid - 2*offset,       
     coinMid - offset,
-    coinMid,
+    coinMid,                // -0.17
     coinMid + offset,
     coinMid + 2*offset
 ];
@@ -50,12 +50,13 @@ function bitcoin_free(){
 }
 
 // FUNCTION TO CHECK IF THE CAR HAS GOT ANY BITCOIN, TO UPDATE THE SCORE
-function bitcoin_collision(car){
+function bitcoin_collision(car1){
     for (i = 0; i < bitcoins.length; i++){
-        console.log("car x, z", car.position.x+coinMid, car.position.z);
         //console.log("coin x, z", bitcoins[i].position.x, bitcoins[i].position.z);
+        car = car1.getObjectByName('root');
+        //console.log("car x, z", car.position.x+coinMid, car1.position.z);
 
-        if (bitcoins[i].position.x == car.position.x+coinMid && Math.floor(Math.abs(bitcoins[i].position.z)) == Math.floor(Math.abs(car.position.z+0))){
+        if (bitcoins[i].position.x == car1.position.x+coinMid && Math.floor(Math.abs(bitcoins[i].position.z)) == Math.floor(Math.abs(car1.position.z - 1.5))){
             //console.log(bitcoins.length);
             scene.remove(bitcoins[i]);
             //bitcoins.splice(bitcoins.indexOf(bitcoins[i]), 1);

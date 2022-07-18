@@ -1,3 +1,6 @@
+var animTime = 350;
+
+
 function rotateWheel(car1) {
 
     // IMPORT OBJECT
@@ -41,7 +44,7 @@ rightYaxis.copy( frontWheelRight.position ).sub( backtWheelRight.position );
 leftYaxis.copy( frontWheelLeft.position ).sub( backWheelLeft.position );
     // left
 if (keyCode == 65 && keyFlag && car.position.x != 2) {
-    console.log('sx');
+    console.log(car.position.x + 'sx');
     keyFlag = false;
     frontWheelLeft.rotation.x = 0.0;
     frontWheelLeft.rotation.y = 0.0;
@@ -49,9 +52,9 @@ if (keyCode == 65 && keyFlag && car.position.x != 2) {
     frontWheelRight.rotation.x = 0.0;
     frontWheelRight.rotation.y = 0.0;
     frontWheelRight.rotation.z = 0.0;
-    new TWEEN.Tween(car.position).to({x:car.position.x + 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
-    new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 15}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
-    new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 215}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
+    new TWEEN.Tween(car1.position).to({x:car1.position.x - 0.5}, animTime).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 15}, animTime/2).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 215}, animTime/2).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y + 1, z:frontWheelLeft.rotation.z - 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
     new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y = 0, z:frontWheelLeft.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y + 1, z:frontWheelRight.rotation.z - 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
@@ -67,9 +70,9 @@ if (keyCode == 65 && keyFlag && car.position.x != 2) {
     frontWheelLeft.rotation.x = 0.0;
     frontWheelLeft.rotation.y = 0.0;
     frontWheelLeft.rotation.z = 0.0;
-    new TWEEN.Tween(car.position).to({x:car.position.x - 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
-    new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 15}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
-    new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 215}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
+    new TWEEN.Tween(car1.position).to({x:car1.position.x + 0.5}, animTime).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 15}, animTime/2).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 215}, animTime/2).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y - 1, z:frontWheelRight.rotation.z + 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
     new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y = 0, z:frontWheelRight.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y - 1, z:frontWheelLeft.rotation.z + 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
