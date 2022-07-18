@@ -20,9 +20,7 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
   //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
 
     gltf.scene.traverse( child => {
-
         if ( child.material ) child.material.metalness = 0.80;
-
     } );
   car1.rotateY(THREE.Math.degToRad(180));
   scene.add( car1 );
