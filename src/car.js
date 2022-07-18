@@ -43,7 +43,7 @@ var leftYaxis = new THREE.Vector3();
 rightYaxis.copy( frontWheelRight.position ).sub( backtWheelRight.position );
 leftYaxis.copy( frontWheelLeft.position ).sub( backWheelLeft.position );
     // left
-if (keyCode == 65 && keyFlag && car.position.x != 2) {
+if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
     console.log(car.position.x + 'sx');
     keyFlag = false;
     frontWheelLeft.rotation.x = 0.0;
@@ -61,7 +61,7 @@ if (keyCode == 65 && keyFlag && car.position.x != 2) {
     new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y = 0, z:frontWheelRight.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
 
     // right
-} else if (keyCode == 68 && keyFlag && car.position.x != -2) {
+} else if (keyCode == 68 && keyFlag && car1.position.x != + 1) {
     console.log('dx');
     keyFlag = false;
     frontWheelRight.rotation.x = 0.0;
