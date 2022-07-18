@@ -12,10 +12,10 @@ const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.x = 0.0;
-camera.position.z = 0;
+camera.position.x = 1.0;
+camera.position.z = -3;
 // camera.position.z = -165; // HELPFUL DEBUGGER
-camera.position.y = 1.5;
+camera.position.y = 0.5;
 
 scene.add( camera );
 
