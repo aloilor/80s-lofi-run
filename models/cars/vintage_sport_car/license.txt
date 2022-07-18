@@ -1,0 +1,11 @@
+Model Information:
+* title:	Vintage Sport Car
+* source:	https://sketchfab.com/3d-models/vintage-sport-car-21d44aabfd5b4d5b8af2a23bc292d4cf
+* author:	Hancock (https://sketchfab.com/hans.fredo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Vintage Sport Car" (https://sketchfab.com/3d-models/vintage-sport-car-21d44aabfd5b4d5b8af2a23bc292d4cf) by Hancock (https://sketchfab.com/hans.fredo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

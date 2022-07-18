@@ -7,6 +7,30 @@ scene = new THREE.Scene();
 //scene.background = new THREE.Color('black');
 
 
+// LOAD CAR
+var car1;
+loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
+  car1 = gltf.scene;
+  car1.scale.multiplyScalar(0.30); 
+  car1.name = "car1";
+  car1.castShadow = true;
+  car1.receiveShadow = true;
+  car1.position.setX(0.0);
+  car1.position.setY(0.1);
+  car1.position.setZ(22.0);
+  car1.rotation.y = Math.PI / 10;
+  //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
+
+  dirLight.target = car1;
+  
+
+  car1.rotateY(THREE.Math.degToRad(180));
+  scene.add( car1 );
+
+  // VISUALIZAING THE HIERARCHY OF THE CAR
+  console.log(dumpObject(car1).join('\n'));
+});
+
 // CAMERA INITIALIZATION
 const fov = 45;
 const aspect = 2;  // the canvas default
@@ -16,7 +40,7 @@ camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.x = 0.0;
 camera.position.z = 0;
 // camera.position.z = -165; // HELPFUL DEBUGGER
-camera.position.y = 1.1;
+camera.position.y = 1.5;
 
 scene.add( camera );
 
@@ -65,7 +89,10 @@ function animate() {
     if (car1 && camera.position.z > -715){
       camera.position.z -= 0.12;
       car1.position.z -= 0.12;
+      rotateWheel(car1);
+      TWEEN.update();
       bitcoin_collision(car1);
       nitro_collision(car1);
     }
 }; animate();
+
