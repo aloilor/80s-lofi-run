@@ -4,24 +4,31 @@ var loader = new THREE.GLTFLoader();
 // LOADING CAR MODEL 
 var carPosX = 0.0;
 var carPosY = 0.0;
-var carPosZ = -4;
+var carPosZ = -5;
+// LOAD CAR
 var car1;
-loader.load( '../models/cars/parzivals_delorean_dmc-12/scene.gltf', function ( gltf ) {
-    car1 = gltf.scene;
-    car1.scale.multiplyScalar(0.19); 
-    car1.name = "car1";
-    car1.castShadow = true;
-    car1.receiveShadow = true;
-    car1.position.setX(carPosX);
-    car1.position.setY(carPosY);
-    car1.position.setZ(carPosZ);
-    //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
+loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
+  car1 = gltf.scene;
+  car1.scale.multiplyScalar(0.30); 
+  car1.name = "car1";
+  car1.castShadow = true;
+  car1.receiveShadow = true;
+  car1.position.setX(carPosX);
+  car1.position.setY(carPosY);
+  car1.position.setZ(carPosZ);
+  car1.rotation.y = Math.PI / 10;
+  //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
 
-    car1.rotateY(THREE.Math.degToRad(180));
-    scene.add( car1 );
-    
-    // VISUALIZAING THE HIERARCHY OF THE CAR
-    //console.log(dumpObject(car1).join('\n'));
+    gltf.scene.traverse( child => {
+
+        if ( child.material ) child.material.metalness = 0.80;
+
+    } );
+  car1.rotateY(THREE.Math.degToRad(180));
+  scene.add( car1 );
+
+  // VISUALIZAING THE HIERARCHY OF THE CAR
+  console.log(dumpObject(car1).join('\n'));
 });
 
 

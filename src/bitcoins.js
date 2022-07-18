@@ -52,7 +52,7 @@ function bitcoin_free(){
 // FUNCTION TO CHECK IF THE CAR HAS GOT ANY BITCOIN, TO UPDATE THE SCORE
 function bitcoin_collision(car){
     for (i = 0; i < bitcoins.length; i++){
-        //console.log("car x, z", car.position.x+coinMid, car.position.z);
+        console.log("car x, z", car.position.x+coinMid, car.position.z);
         //console.log("coin x, z", bitcoins[i].position.x, bitcoins[i].position.z);
 
         if (bitcoins[i].position.x == car.position.x+coinMid && Math.floor(Math.abs(bitcoins[i].position.z)) == Math.floor(Math.abs(car.position.z+0))){
