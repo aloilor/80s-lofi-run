@@ -32,15 +32,20 @@ function onDocumentKeyDown(event) {
 var keyCode = event.which;
 car = car1.getObjectByName('root');
     // left
-if (keyCode == 65 && keyFlag) {
+if (keyCode == 65 && keyFlag && car.position.x != 2) {
     console.log('sx');
     keyFlag = false;
     new TWEEN.Tween(car.position).to({x:car.position.x + 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 15}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 215}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
+    console.log(car.position);
     // right
-} else if (keyCode == 68 && keyFlag) {
+} else if (keyCode == 68 && keyFlag && car.position.x != -2) {
     console.log('dx');
     keyFlag = false;
     new TWEEN.Tween(car.position).to({x:car.position.x - 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 15}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 215}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     // space
 } else if (keyCode == 32) {
     console.log('space');
