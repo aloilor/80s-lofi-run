@@ -48,6 +48,10 @@ loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
     //bitcoin.rotateY(THREE.Math.degToRad(180));
     //scene.add(bitcoin);
     //console.log(dumpObject(bitcoin).join('\n'));
+    
+    gltf.scene.traverse( child => {
+      if ( child.material ) child.material.metalness = 0.0001;
+    } );
 })
 
 // LOADING NITRO MODEL
@@ -67,6 +71,10 @@ loader.load( '../models/other entities/nitrogen_bottle/scene.gltf', function ( g
   //bitcoin.rotateY(THREE.Math.degToRad(180));
   //scene.add(nitro);
   //console.log(dumpObject(bitcoin).join('\n'));
+
+  gltf.scene.traverse( child => {
+    if ( child.material ) child.material.metalness = 0.1;
+  } );
 
 })
 

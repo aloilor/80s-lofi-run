@@ -10,6 +10,8 @@ var poss_x_nitro_pos = [            // USEFUL ARRAY TO KEEP TRACK OF THE X POSIT
     2*offset
 ];
 
+var nitro_range = 0.35; // RANGE IN WHICH THE NITRO WILL BE TAKEN
+
 
 function nitro_spawn(nitro){
     var x = poss_x_nitro_pos[ Math.floor(Math.random() * poss_x_nitro_pos.length) ];
@@ -45,10 +47,22 @@ function nitro_free(){
     }
 }
 
+function nitro_collision_aux(car){
+    if (car.position.x > nitros[i].position.x - nitro_range &&
+        car.position.x < nitros[i].position.x + nitro_range &&  
+        Math.abs(car.position.z) > Math.abs(nitros[i].position.z) - nitro_range && 
+        Math.abs(car.position.z) < Math.abs(nitros[i].position.z) + nitro_range ){
+            return true;
+        }
+    else return false; 
+
+}
+
+
 function nitro_collision(car){
     for (i = 0; i < nitros.length; i++){
 
-        if (nitros[i].position.x == car.position.x && Math.floor(Math.abs(nitros[i].position.z)) == Math.floor(Math.abs(car.position.z+0))){
+        if (nitro_collision_aux(car)){
             scene.remove(nitros[i]);
             //nitros.splice(bitcoins.indexOf(bitcoins[i]), 1);
             score += 20;

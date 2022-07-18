@@ -62,8 +62,8 @@ function animate() {
     if (bitcoin) random_bitcoin_spawn(bitcoin);
     if (nitro) random_nitro_spawn(nitro);
     if (car1 && camera.position.z > -715){
-      camera.position.z -= 0.07;
-      car1.position.z -= 0.07;
+      //camera.position.z -= 0.07;
+      //car1.position.z -= 0.07;
       rotateWheel(car1);
       TWEEN.update();
       bitcoin_collision(car1);
