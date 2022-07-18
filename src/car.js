@@ -43,22 +43,37 @@ leftYaxis.copy( frontWheelLeft.position ).sub( backWheelLeft.position );
 if (keyCode == 65 && keyFlag && car.position.x != 2) {
     console.log('sx');
     keyFlag = false;
+    frontWheelLeft.rotation.x = 0.0;
+    frontWheelLeft.rotation.y = 0.0;
+    frontWheelLeft.rotation.z = 0.0;
+    frontWheelRight.rotation.x = 0.0;
+    frontWheelRight.rotation.y = 0.0;
+    frontWheelRight.rotation.z = 0.0;
     new TWEEN.Tween(car.position).to({x:car.position.x + 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
     new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 15}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
     new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 215}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
-    // new TWEEN.Tween(frontWheelRight.rotation).to({z:frontWheelLeft.rotation.z + Math.PI / 5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
-    // new TWEEN.Tween(frontWheelRight.rotation).to({z:frontWheelLeft.rotation.z - Math.PI / 205}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
+    new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y + 1, z:frontWheelLeft.rotation.z - 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y = 0, z:frontWheelLeft.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
+    new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y + 1, z:frontWheelRight.rotation.z - 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y = 0, z:frontWheelRight.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
 
     // right
 } else if (keyCode == 68 && keyFlag && car.position.x != -2) {
     console.log('dx');
     keyFlag = false;
+    frontWheelRight.rotation.x = 0.0;
+    frontWheelRight.rotation.y = 0.0;
+    frontWheelRight.rotation.z = 0.0;
+    frontWheelLeft.rotation.x = 0.0;
+    frontWheelLeft.rotation.y = 0.0;
+    frontWheelLeft.rotation.z = 0.0;
     new TWEEN.Tween(car.position).to({x:car.position.x - 1}, 500).easing(TWEEN.Easing.Sinusoidal.Out).onComplete(function() {keyFlag = true}).start();
     new TWEEN.Tween(car.rotation).to({z:car.rotation.z - Math.PI / 15}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
     new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 215}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
-    // new TWEEN.Tween(frontWheelRight.rotation).to({z:frontWheelRight.rotation.z - Math.PI / 5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
-    // new TWEEN.Tween(frontWheelRight.rotation).to({z:frontWheelRight.rotation.z + Math.PI / 205}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
-    //frontWheelRight.rotateOnAxis( rightYaxis, Math.PI / 180 );
+    new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y - 1, z:frontWheelRight.rotation.z + 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y = 0, z:frontWheelRight.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
+    new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y - 1, z:frontWheelLeft.rotation.z + 0.5}, 250).easing(TWEEN.Easing.Sinusoidal.Out).chain(
+    new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y = 0, z:frontWheelLeft.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     
     // space
 } else if (keyCode == 32) {
