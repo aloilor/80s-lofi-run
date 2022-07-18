@@ -59,7 +59,7 @@ function animate() {
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
 
-    if (bitcoin) random_bitcoin_spawn(bitcoin);
+    if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
     if (nitro) random_nitro_spawn(nitro);
     if (car1 && camera.position.z > -715){
       camera.position.z -= 0.07;

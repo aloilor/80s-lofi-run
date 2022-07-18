@@ -78,3 +78,16 @@ function check_bitcoin (obj) {  // USEFUL FUNCTION TO CHECK IF WE ARE GOING TO S
     return false;
     
 }
+
+function rotateBitcoin() {
+    for (i = 0; i < bitcoins.length; i++){
+        var axisBitcoin = new THREE.Vector3();
+
+        var topPosition = new THREE.Vector3(bitcoins[i].position.x + 0.5, bitcoins[i].position.y + 0.5 , bitcoins[i].position.z + 0.5);
+        var bottomPosition = new THREE.Vector3(bitcoins[i].position.x - 0.5, bitcoins[i].position.y - 0.5  , bitcoins[i].position.z - 0.5);
+
+        axisBitcoin.copy( topPosition ).sub( bottomPosition );
+        bitcoins[i].rotateOnAxis( axisBitcoin, Math.PI / 180);
+    }
+}
+
