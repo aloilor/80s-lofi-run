@@ -12,11 +12,19 @@ const aspect = 2;  // the canvas default
 const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.x = 1;
-camera.position.z = -1.75;
+
+posX = 1.0;
+posY = 1.0;
+posZ = -1.75;
+rotX = 0.0;
+rotY = 0.2;
+
+camera.position.x = 19.5;
+camera.position.z = -90;
 // camera.position.z = -165; // HELPFUL DEBUGGER
-camera.position.y = 1;
-camera.rotation.y = 0.2;
+camera.position.y = 20;
+camera.rotation.y = 3;
+camera.rotation.x = 0.5;
 scene.add( camera );
 
 // RENDERER INITIALIZATION
@@ -54,10 +62,32 @@ scene.add(dirLight.target);
 const helper = new THREE.DirectionalLightHelper(dirLight);
 //scene.add(helper);
 
+tweenCameraFlag = true;
+
+function cameraTween(){
+  if(tweenCameraFlag){
+    tweenCameraFlag = false;
+  new TWEEN.Tween(camera.position).to({z:camera.position.z + 70.0}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.position).to({y:camera.position.y - 18.9}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.position).to({x:camera.position.x - 18.5}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.rotation).to({y:camera.rotation.y - 2.8}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.rotation).to({x:camera.rotation.x - 0.5}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  }
+}
+
+var timeLoading = 0;
+console.log(timeLoading)
 
 function animate() {
+    timeLoading += 1;
+
+    console.log(timeLoading)
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
+
+    if(timeLoading > 250){
+    document.getElementById("loading").style.display = "none";
+    cameraTween();
 
     if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
     if (nitro) random_nitro_spawn(nitro);
@@ -72,5 +102,8 @@ function animate() {
       endAnimation(car1);
       TWEEN.update();
     }
+
+  }
+
 }; animate();
 
