@@ -31,6 +31,7 @@ function rotateWheel(car1) {
 
 document.addEventListener("keydown", onDocumentKeyDown, false);
 var keyFlag = true;
+var keyFlagJump = true;
 function onDocumentKeyDown(event) {
 var keyCode = event.which;
 car = car1.getObjectByName('root');
@@ -79,7 +80,12 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
     new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y = 0, z:frontWheelLeft.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     
     // space
-} else if (keyCode == 32) {
+} else if (keyCode == 32 && keyFlagJump) {
     console.log('space');
+    keyFlagJump = false;
+    new TWEEN.Tween(car1.position).to({y:car1.position.y + 0.6}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
+    new TWEEN.Tween(car1.position).to({y:car1.position.y - 0.04}, 500).easing(TWEEN.Easing.Quadratic.In).onComplete(function() {keyFlagJump = true, car1.position.y = 0.1})).start();
+    new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.25}, 400).easing(TWEEN.Easing.Quadratic.Out).chain(
+    new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.001}, 400).easing(TWEEN.Easing.Quadratic.In)).start();
 }
 };
