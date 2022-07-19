@@ -13,6 +13,8 @@ const near = 0.1;
 const far = 10000;
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 
+//DEFAULT VALUE
+
 posX = 1.0;
 posY = 1.0;
 posZ = -1.75;
