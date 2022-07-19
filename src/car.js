@@ -89,3 +89,16 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
     new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.001}, 400).easing(TWEEN.Easing.Quadratic.In)).start();
 }
 };
+
+var once = true;
+
+function endAnimation(car1){
+    car = car1.getObjectByName('root');
+
+    if(once){
+        once = false;
+        new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 2}, 300).easing(TWEEN.Easing.Quadratic.Out).start();
+        new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.3}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
+        new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.01}, 300).easing(TWEEN.Easing.Quadratic.In)).start();
+    }
+}
