@@ -2,20 +2,39 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>All Star Run</title>
+		<title>Endless Lofi</title>
+		<link rel="stylesheet" href="src/css/index.css">
 		<style>
-			body { margin: 0; }
+			body  {background-image: url("/images/wallpaper.png");}
 		</style>
 	</head>
 	<body>
 
-		<button style="position: absolute; top: 60%; left: 50%;" onclick = "play()"> <h3 style="text-align: center; font-size:x-large; color: black;"> Play! </h3> </button>
+		<header>
+			<h1>Endless Lofi</h1>
+			<h2>Select Difficulty</h2>
+			<h3><span id="difficulty">EASY</span></h2>
+			<button class="button-36"  role="button" style="position: absolute; top: 40%; left: 12.5%;" onclick = "play()">PLAY</button>
+			<p> <i class="arrow right" style="position: absolute; top: 30%; left: 25%;" onclick = "extreme()"></i></p>
+			<p> <i class="arrow left" style="position: absolute; top: 30%; left: 6%;" onclick = "easy()"></i></p>
+		</header>
+
+		
+
 
 
 		<script type="text/javascript">
 			
 			function play(){
 				window.location.href = "./src/play.html";
+			}
+
+			function easy(){
+				document.getElementById("difficulty").innerHTML = 'EASY';
+}
+
+			function extreme(){
+				document.getElementById("difficulty").innerHTML = 'EXTREME';
 			}
 
 			</script>
