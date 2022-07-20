@@ -80,11 +80,10 @@ function cameraTween(){
 }
 
 var timeLoading = 0;
-
+clock.start();
 function animate() {
     timeLoading += 1;
-
-    //console.log(timeLoading)
+    //console.log(timeLoading);
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
 
@@ -104,8 +103,48 @@ function animate() {
         car1.position.z -= 0.07;
         rotateWheel(car1);
         TWEEN.update();
+
+        // TO MAKE THE CAR BLINK WHILE GOING INTO AN OBSTACLE
+        if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 == 0){
+          car1.traverse( child => {
+            if ( child.material ){
+              child.material.opacity = 1.0;
+              child.material.transparent = false;
+            } 
+          } );
+        }
+
+        if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 != 0){
+          car1.traverse( child => {
+            if ( child.material ){
+              child.material.opacity = 0.0;
+              child.material.transparent = true;
+            } 
+          } );
+        }
+
+        if (collisionFlag && clock.getElapsedTime() >= collisionStart + collisionSpan){
+          car1.traverse( child => {
+            if ( child.material ){
+              child.material.opacity = 1.0;
+              child.material.transparent = false;
+            } 
+          } );
+          collisionFlag = false;
+        }
+
         if(obs_collision(car1)) {
           //keepGoing = false;
+          collisionFlag = true;
+          collisionStart = clock.getElapsedTime();
+
+          car1.traverse( child => {
+            if ( child.material ){
+              child.material.opacity = 0.0;
+              child.material.transparent = true;
+            } 
+          } );
+
         }
         bitcoin_collision(car1);
         nitro_collision(car1);

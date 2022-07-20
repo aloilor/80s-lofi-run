@@ -1,3 +1,5 @@
+var clock = new THREE.Clock();
+
 var offset = 0.5;           // OFFSET BETWEEN THE 5 TRACKS OF THE ROAD
 
 var coinMid = -0.17;        // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
@@ -13,6 +15,7 @@ var max_distance = 70;      // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOIN
 var lives = 5;              // NUMBER OF LIVES OF THE CAR
 
 var keepGoing = true;        // VARIABLE TO KNOW IF THE CAR HAS STOPPED OR NOT
+
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {

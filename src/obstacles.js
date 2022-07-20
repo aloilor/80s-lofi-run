@@ -6,6 +6,10 @@ chassis.material.opacity = 0.1;
 chassis.material.transparent = true;
 */
 
+var collisionFlag = false;      // VARIABLE TO KNOW IF THERE HAS BEEN A COLLISION WITH AN OBSTACLE
+var collisionSpan = 0.5;          // TIME IN WHICH THE CAR WILL KEEP DISAPPEARING AND REAPPEARING IN SECONDS
+var collisionStart = 0;
+
 var obstacles = new Array();
 var gap_between_obstacles = 15;
 var obsStart = -20;
