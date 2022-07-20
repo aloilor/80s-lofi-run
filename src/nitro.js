@@ -1,5 +1,5 @@
 var nitros = new Array();
-var gap_between_nitros = 120;       //DISTANCE BETWEEN A NITRO TANK AND THE NEXT ONE
+var gap_between_nitros = 100;       //DISTANCE BETWEEN A NITRO TANK AND THE NEXT ONE
 var nitroStart = -70;               //START POSITION FROM WHICH THE NITROS WILL START TO SPAWN
 
 var poss_x_nitro_pos = [            // USEFUL ARRAY TO KEEP TRACK OF THE X POSITIONS IN WHICH THE NITRO CAN SPAWN
@@ -10,7 +10,11 @@ var poss_x_nitro_pos = [            // USEFUL ARRAY TO KEEP TRACK OF THE X POSIT
     2*offset
 ];
 
+
+var nitroStartInv = 0;
+var nitroSpan = 3;
 var nitro_range = 0.35; // RANGE IN WHICH THE NITRO WILL BE TAKEN
+var invFlag = false; // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE NITRO
 
 
 function nitro_spawn(nitro){
@@ -24,7 +28,7 @@ function nitro_spawn(nitro){
     clone.position.set(x, nitroPosY, nitroStart);
     nitros.push(clone);
     scene.add(clone);
-    //console.log(nitros.length);
+    console.log(nitros.length);
     nitroStart -= gap_between_nitros;
 }
 
@@ -51,7 +55,10 @@ function nitro_collision_aux(car, i){
     if (car.position.x > nitros[i].position.x - nitro_range &&
         car.position.x < nitros[i].position.x + nitro_range &&  
         Math.abs(car.position.z) > Math.abs(nitros[i].position.z) - nitro_range && 
-        Math.abs(car.position.z) < Math.abs(nitros[i].position.z) + nitro_range ){
+        Math.abs(car.position.z) < Math.abs(nitros[i].position.z) + nitro_range &&
+        car1.position.y < nitros[i].position.y + 0.5 &&
+        car1.position.y > nitros[i].position.y - 0.5
+        ){
             return true;
         }
     else return false; 
@@ -63,9 +70,10 @@ function nitro_collision(car){
     for (i = 0; i < nitros.length; i++){
 
         if (nitro_collision_aux(car, i)){
-            invincible = true;
+            invFlag = true;
             scene.remove(nitros[i]);
             //console.log(score);
+            return true;
         }
     }
 }

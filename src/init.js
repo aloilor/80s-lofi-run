@@ -83,7 +83,7 @@ var timeLoading = 0;
 clock.start();
 function animate() {
     timeLoading += 1;
-    //console.log(timeLoading);
+    //console.log(nitroStartInv, nitroSpan, clock.getElapsedTime());
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
 
@@ -101,6 +101,11 @@ function animate() {
       if (keepGoing && car1 && camera.position.z > -715){
         camera.position.z -= 0.07;
         car1.position.z -= 0.07;
+        if (bubble){
+          bubble.position.x = car1.position.x;
+          bubble.position.z = car1.position.z + 0.15;
+          bubble.position.y = car1.position.y + 0.15;
+        }  
         rotateWheel(car1);
         TWEEN.update();
 
@@ -108,12 +113,12 @@ function animate() {
         if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 == 0){
           car1.traverse( child => {
             if ( child.material ){
-              child.material.opacity = 1.0;
+              child.material.opacity = 1;
               child.material.transparent = false;
             } 
           } );
         }
-
+        //DISAPPEAR
         if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 != 0){
           car1.traverse( child => {
             if ( child.material ){
@@ -122,17 +127,23 @@ function animate() {
             } 
           } );
         }
-
+        //REAPPEAR
         if (collisionFlag && clock.getElapsedTime() >= collisionStart + collisionSpan){
           car1.traverse( child => {
             if ( child.material ){
-              child.material.opacity = 1.0;
-              child.material.transparent = false;
+              child.material.opacity = 1000;
+              child.material.transparent = true;
             } 
           } );
           collisionFlag = false;
         }
 
+        if (invFlag && clock.getElapsedTime() >= nitroStartInv + nitroSpan){
+          invFlag = false;
+          scene.remove(bubble);          
+        }
+
+        //OBSTACLE COLLISION
         if(obs_collision(car1)) {
           //keepGoing = false;
           collisionFlag = true;
@@ -147,7 +158,15 @@ function animate() {
 
         }
         bitcoin_collision(car1);
-        nitro_collision(car1);
+
+        //GETTING NITRO
+        if (nitro_collision(car1)){
+          nitroStartInv = clock.getElapsedTime();
+          bubble.position.setX(bubblePosX);
+          bubble.position.setY(bubblePosY);
+          bubble.position.setZ(bubblePosZ);
+          scene.add(bubble);
+        }
       } else if(! keepGoing || car1 && camera.position.z < -715) {
         endAnimation(car1);
         TWEEN.update();

@@ -7,7 +7,6 @@ var coinMid = -0.17;        // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
 
 var score = 0;              // PLAYER SCORE -- IT WILL INCREMENT EVERY TIME THE PLAYER GETS A BITCOIN 
 
-var invincible = false;     // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE NITRO
 
 var max_distance = 70;      // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOINS WILL SPAWN, 
                             // TO KEEP CLEAN AND FAST THE GAME
