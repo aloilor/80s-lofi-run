@@ -80,12 +80,10 @@ function cameraTween(){
 }
 
 var timeLoading = 0;
-console.log(timeLoading)
 
 function animate() {
     timeLoading += 1;
 
-    console.log(timeLoading)
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
 
