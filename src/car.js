@@ -45,7 +45,7 @@ rightYaxis.copy( frontWheelRight.position ).sub( backtWheelRight.position );
 leftYaxis.copy( frontWheelLeft.position ).sub( backWheelLeft.position );
     // left
 if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
-    console.log(car.position.x + 'sx');
+    //console.log(car.position.x + 'sx');
     keyFlag = false;
     frontWheelLeft.rotation.x = 0.0;
     frontWheelLeft.rotation.y = 0.0;
@@ -63,7 +63,7 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
 
     // right
 } else if (keyCode == 68 && keyFlag && car1.position.x != + 1) {
-    console.log('dx');
+    //console.log('dx');
     keyFlag = false;
     frontWheelRight.rotation.x = 0.0;
     frontWheelRight.rotation.y = 0.0;
@@ -81,7 +81,7 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
     
     // space
 } else if (keyCode == 32 && keyFlagJump) {
-    console.log('space');
+    //console.log('space');
     keyFlagJump = false;
     new TWEEN.Tween(car1.position).to({y:car1.position.y + 0.6}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
     new TWEEN.Tween(car1.position).to({y:car1.position.y - 0.04}, 500).easing(TWEEN.Easing.Quadratic.In).onComplete(function() {keyFlagJump = true, car1.position.y = 0.1})).start();

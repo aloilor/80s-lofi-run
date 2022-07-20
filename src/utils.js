@@ -10,7 +10,9 @@ var invincible = false;     // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE
 var max_distance = 70;      // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOINS WILL SPAWN, 
                             // TO KEEP CLEAN AND FAST THE GAME
 
+var lives = 5;              // NUMBER OF LIVES OF THE CAR
 
+var keepGoing = true;        // VARIABLE TO KNOW IF THE CAR HAS STOPPED OR NOT
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {

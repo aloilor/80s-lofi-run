@@ -17,7 +17,6 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
   car1.position.setY(carPosY);
   car1.position.setZ(carPosZ);
   car1.rotation.y = Math.PI / 10;
-  //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
 
     gltf.scene.traverse( child => {
         if ( child.material ) child.material.metalness = 0.65;
@@ -26,7 +25,7 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
   scene.add( car1 );
 
   // VISUALIZAING THE HIERARCHY OF THE CAR
-  console.log(dumpObject(car1).join('\n'));
+  // console.log(dumpObject(car1).join('\n'));
 });
 
 
@@ -45,9 +44,6 @@ loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
     bitcoin.name = "bitcoin"
     bitcoin.castShadow = true;
     bitcoin.receiveShadow = true;
-    //bitcoin.rotateY(THREE.Math.degToRad(180));
-    //scene.add(bitcoin);
-    //console.log(dumpObject(bitcoin).join('\n'));
     
     gltf.scene.traverse( child => {
       if ( child.material ) child.material.metalness = 0.0001;
@@ -68,14 +64,10 @@ loader.load( '../models/other entities/nitrogen_bottle/scene.gltf', function ( g
   nitro.name = "nitro"
   nitro.castShadow = true;
   nitro.receiveShadow = true;
-  //bitcoin.rotateY(THREE.Math.degToRad(180));
-  //scene.add(nitro);
-  //console.log(dumpObject(bitcoin).join('\n'));
 
   gltf.scene.traverse( child => {
     if ( child.material ) child.material.metalness = 0.1;
   } );
-
 })
 
 
@@ -84,13 +76,34 @@ loader.load( '../models/maps/80s-style/neonroad_endless_loop/scene.gltf', functi
     ambient = gltf.scene;
     ambient.name = "ambient1";
     scene.add( ambient );
-    
-    //VISUALIZING THE HIERARCHY OF OUR ENVIRONMENT 
-    //console.log(dumpObject(ambient).join('\n'));
 });
 
 
 // LOADING FENCE MODEL 
+
+var fence;
+var fencePosX = 0;
+var fencePosY = 0.05;
+var fencePosZ = -8;
+loader.load( '../models/other entities/concrete_fence/scene.gltf', function ( gltf ) {
+  fence = gltf.scene;
+  fence.scale.multiplyScalar(0.005); 
+  fence.position.setX(-0.75 + 3*offset);
+  fence.position.setY(fencePosY);
+  fence.position.setZ(fencePosZ);
+  fence.rotateY(THREE.Math.degToRad(90));
+  fence.name = "fence";
+  fence.castShadow = true;
+  fence.receiveShadow = true;
+
+  gltf.scene.traverse( child => {
+    if ( child.material ) child.material.metalness = 0.4;
+  } );
+})
+
+
+
+
 
 
 

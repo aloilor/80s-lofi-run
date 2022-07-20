@@ -16,15 +16,15 @@ var nitro_range = 0.35; // RANGE IN WHICH THE NITRO WILL BE TAKEN
 function nitro_spawn(nitro){
     var x = poss_x_nitro_pos[ Math.floor(Math.random() * poss_x_nitro_pos.length) ];
     var clone = nitro.clone(); 
-    clone.position.set(x, 0.07, nitroStart);
-    while (check_bitcoin(clone)){
+    clone.position.set(x, nitroPosY, nitroStart);
+    while (check_bitcoin(clone) || check_obs(clone)){
         nitroStart -= 1;
-        clone.position.set(x, 0.07, nitroStart);
+        clone.position.set(x, nitroPosY, nitroStart);
     }
-    clone.position.set(x, 0.07, nitroStart);
+    clone.position.set(x, nitroPosY, nitroStart);
     nitros.push(clone);
     scene.add(clone);
-    console.log(nitros.length);
+    //console.log(nitros.length);
     nitroStart -= gap_between_nitros;
 }
 
@@ -42,12 +42,12 @@ function nitro_free(){
         if (nitros[i].position.z > camera.position.z+1){
             scene.remove(nitros[i]);
             nitros.splice(nitros.indexOf(nitros[i]), 1);
-            console.log(nitros.length);
+            //console.log(nitros.length);
         }
     }
 }
 
-function nitro_collision_aux(car){
+function nitro_collision_aux(car, i){
     if (car.position.x > nitros[i].position.x - nitro_range &&
         car.position.x < nitros[i].position.x + nitro_range &&  
         Math.abs(car.position.z) > Math.abs(nitros[i].position.z) - nitro_range && 
@@ -62,10 +62,9 @@ function nitro_collision_aux(car){
 function nitro_collision(car){
     for (i = 0; i < nitros.length; i++){
 
-        if (nitro_collision_aux(car)){
+        if (nitro_collision_aux(car, i)){
+            invincible = true;
             scene.remove(nitros[i]);
-            //nitros.splice(bitcoins.indexOf(bitcoins[i]), 1);
-            score += 20;
             //console.log(score);
         }
     }

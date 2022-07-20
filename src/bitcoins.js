@@ -17,16 +17,56 @@ var poss_x_bit_pos = [        // USEFUL ARRAY TO KEEP TRACK OF THE X POSITIONS I
 var bitcoin_range = 0.35; // RANGE IN WHICH THE BITCOIN WILL BE TAKEN
 
 
+function bit_check_obs(x){
+    for (i = 0; i < obstacles.length; i++){
+        if (x >= obstacles[i].position.x + coinMid - offset &&
+            x <= obstacles[i].position.x + coinMid + offset && 
+            Math.abs(bitStart) >= Math.abs(obstacles[i].position.z) - obs_range && 
+            Math.abs(bitStart) <= Math.abs(obstacles[i].position.z) + obs_range)
+            { return true; }
+    }
+    return false;
+}
 
 // THE BITCOINS WILL ALWAYS SPAWN IN GROUP OF 3
-function bitcoin_straight_line(bitcoin){
+function bit_spawn_aux(bitcoin){
     var x = poss_x_bit_pos[ Math.floor(Math.random() * poss_x_bit_pos.length) ];
-    for ( i = 0; i < group; i++){
+    if (bit_check_obs(x)){
+        // SPAWN OVER THE OBSTACLE
         var clone = bitcoin.clone();        
-        clone.position.set(x, bitPosY, bitStart);
+        clone.position.set(x, bitPosY , bitStart + 2);
         bitcoins.push(clone);
         scene.add(clone);    
-        bitStart -= gap_between_coins;
+
+        var clone = bitcoin.clone();        
+        clone.position.set(x, bitPosY + 0.25, bitStart + 1);
+        bitcoins.push(clone);
+        scene.add(clone);    
+        
+        var clone = bitcoin.clone();        
+        clone.position.set(x, bitPosY + 0.5, bitStart );
+        bitcoins.push(clone);
+        scene.add(clone);  
+        
+        var clone = bitcoin.clone();        
+        clone.position.set(x, bitPosY + 0.25, bitStart - 1);
+        bitcoins.push(clone);
+        scene.add(clone);  
+
+        var clone = bitcoin.clone();        
+        clone.position.set(x, bitPosY , bitStart - 2);
+        bitcoins.push(clone);
+        scene.add(clone);  
+    } 
+    else{
+        // STRAIGHT LINE
+        for ( i = 0; i < group; i++){
+            var clone = bitcoin.clone();        
+            clone.position.set(x, bitPosY, bitStart);
+            bitcoins.push(clone);
+            scene.add(clone);    
+            bitStart -= gap_between_coins;
+        }
     }
     bitStart -= gap_between_groups;
 }
@@ -34,7 +74,7 @@ function bitcoin_straight_line(bitcoin){
 // FUNCTION TO RANDOMLY SPAWN BITCOINS
 function random_bitcoin_spawn(bitcoin){
     while(Math.abs(bitStart) < Math.abs(camera.position.z) + max_distance){
-        bitcoin_straight_line(bitcoin);
+        bit_spawn_aux(bitcoin);
         bitcoin_free();
     } 
 }
@@ -55,7 +95,10 @@ function bitcoin_collision_aux(car1){
     if (car1.position.x+coinMid > bitcoins[i].position.x - bitcoin_range && 
         car1.position.x+coinMid < bitcoins[i].position.x + bitcoin_range && 
         Math.abs(car1.position.z ) > Math.abs(bitcoins[i].position.z) - bitcoin_range &&
-        Math.abs(car1.position.z ) < Math.abs(bitcoins[i].position.z) + bitcoin_range ) {
+        Math.abs(car1.position.z ) < Math.abs(bitcoins[i].position.z) + bitcoin_range && 
+        car1.position.y < bitcoins[i].position.y + 0.5 &&
+        car1.position.y > bitcoins[i].position.y - 0.5
+        ) {
             return true;
         }
     else return false;
@@ -66,7 +109,6 @@ function bitcoin_collision_aux(car1){
 function bitcoin_collision(car1){
     for (i = 0; i < bitcoins.length; i++){
         //console.log("coin x, z", bitcoins[i].position.x, bitcoins[i].position.z);
-        car = car1.getObjectByName('root');
         //console.log("car x, z", car.position.x+coinMid, car1.position.z);
 
         if (bitcoin_collision_aux(car1)){
