@@ -80,7 +80,6 @@ function cameraTween(){
 }
 
 var timeLoading = 0;
-console.log(timeLoading)
 
 function animate() {
     timeLoading += 1;
