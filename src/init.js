@@ -65,15 +65,17 @@ const helper = new THREE.DirectionalLightHelper(dirLight);
 //scene.add(helper);
 
 tweenCameraFlag = true;
+finishTweenCamera = false;
 
 function cameraTween(){
   if(tweenCameraFlag){
     tweenCameraFlag = false;
-  new TWEEN.Tween(camera.position).to({z:camera.position.z + 70.0}, 5000).easing(TWEEN.Easing.Linear.None).start();
-  new TWEEN.Tween(camera.position).to({y:camera.position.y - 18.9}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.position).to({z:camera.position.z + 88.25}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.position).to({y:camera.position.y - 19.0}, 5000).easing(TWEEN.Easing.Linear.None).start();
   new TWEEN.Tween(camera.position).to({x:camera.position.x - 18.5}, 5000).easing(TWEEN.Easing.Linear.None).start();
   new TWEEN.Tween(camera.rotation).to({y:camera.rotation.y - 2.8}, 5000).easing(TWEEN.Easing.Linear.None).start();
-  new TWEEN.Tween(camera.rotation).to({x:camera.rotation.x - 0.5}, 5000).easing(TWEEN.Easing.Linear.None).start();
+  new TWEEN.Tween(camera.rotation).to({x:camera.rotation.x - 0.5}, 5000).easing(TWEEN.Easing.Linear.None).onComplete(function() {finishTweenCamera = true}).start();
+
   }
 }
 
@@ -90,19 +92,24 @@ function animate() {
     if(timeLoading > 250){
     document.getElementById("loading").style.display = "none";
     cameraTween();
+  
+    TWEEN.update();
 
-    if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
-    if (nitro) random_nitro_spawn(nitro);
-    if (car1 && camera.position.z > -715){
-      camera.position.z -= 0.07;
-      car1.position.z -= 0.07;
-      rotateWheel(car1);
-      TWEEN.update();
-      bitcoin_collision(car1);
-      nitro_collision(car1);
-    } else if(car1 && camera.position.z < -715) {
-      endAnimation(car1);
-      TWEEN.update();
+    if(finishTweenCamera){
+
+      if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
+      if (nitro) random_nitro_spawn(nitro);
+      if (car1 && camera.position.z > -715){
+        camera.position.z -= 0.07;
+        car1.position.z -= 0.07;
+        rotateWheel(car1);
+        TWEEN.update();
+        bitcoin_collision(car1);
+        nitro_collision(car1);
+      } else if(car1 && camera.position.z < -715) {
+        endAnimation(car1);
+        TWEEN.update();
+      }
     }
 
   }
