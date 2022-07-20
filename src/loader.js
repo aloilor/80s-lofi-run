@@ -20,7 +20,7 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
   //car1.position.setZ(-170.0); // HELPFUL DEBUGGER
 
     gltf.scene.traverse( child => {
-        if ( child.material ) child.material.metalness = 0.80;
+        if ( child.material ) child.material.metalness = 0.65;
     } );
   car1.rotateY(THREE.Math.degToRad(180));
   scene.add( car1 );
@@ -48,6 +48,10 @@ loader.load( '../models/other entities/bitcoin/scene.gltf', function ( gltf ) {
     //bitcoin.rotateY(THREE.Math.degToRad(180));
     //scene.add(bitcoin);
     //console.log(dumpObject(bitcoin).join('\n'));
+    
+    gltf.scene.traverse( child => {
+      if ( child.material ) child.material.metalness = 0.0001;
+    } );
 })
 
 // LOADING NITRO MODEL
@@ -67,6 +71,10 @@ loader.load( '../models/other entities/nitrogen_bottle/scene.gltf', function ( g
   //bitcoin.rotateY(THREE.Math.degToRad(180));
   //scene.add(nitro);
   //console.log(dumpObject(bitcoin).join('\n'));
+
+  gltf.scene.traverse( child => {
+    if ( child.material ) child.material.metalness = 0.1;
+  } );
 
 })
 
