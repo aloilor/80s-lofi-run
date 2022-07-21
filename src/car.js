@@ -44,7 +44,7 @@ var leftYaxis = new THREE.Vector3();
 rightYaxis.copy( frontWheelRight.position ).sub( backtWheelRight.position );
 leftYaxis.copy( frontWheelLeft.position ).sub( backWheelLeft.position );
     // left
-if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
+if (keyCode == 65 && keyFlag && car1.position.x != - 1 && car1.position.z > -714) {
     console.log(car.position.x + 'sx');
     keyFlag = false;
     frontWheelLeft.rotation.x = 0.0;
@@ -62,7 +62,7 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
     new TWEEN.Tween(frontWheelRight.rotation).to({y:frontWheelRight.rotation.y = 0, z:frontWheelRight.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
 
     // right
-} else if (keyCode == 68 && keyFlag && car1.position.x != + 1) {
+} else if (keyCode == 68 && keyFlag && car1.position.x != + 1 && car1.position.z > -714) {
     console.log('dx');
     keyFlag = false;
     frontWheelRight.rotation.x = 0.0;
@@ -80,7 +80,7 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1) {
     new TWEEN.Tween(frontWheelLeft.rotation).to({y:frontWheelLeft.rotation.y = 0, z:frontWheelLeft.rotation.z = 0}, 250).easing(TWEEN.Easing.Sinusoidal.Out)).start();
     
     // space
-} else if (keyCode == 32 && keyFlagJump) {
+} else if (keyCode == 32 && keyFlagJump && car1.position.z > -714) {
     console.log('space');
     keyFlagJump = false;
     new TWEEN.Tween(car1.position).to({y:car1.position.y + 0.6}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
@@ -94,7 +94,6 @@ var once = true;
 
 function endAnimation(car1){
     car = car1.getObjectByName('root');
-
     if(once){
         once = false;
         new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 2}, 300).easing(TWEEN.Easing.Quadratic.Out).start();
