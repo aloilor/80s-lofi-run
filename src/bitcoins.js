@@ -99,6 +99,7 @@ function bitcoin_collision_aux(car1){
         car1.position.y < bitcoins[i].position.y + 0.5 &&
         car1.position.y > bitcoins[i].position.y - 0.5
         ) {
+            coinPlay();
             return true;
         }
     else return false;

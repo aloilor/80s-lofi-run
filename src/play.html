@@ -18,15 +18,33 @@
 				<span class="let7">g</span>  
 			  </h1>
 		</div>
-		
-		<!-- <audio autoplay id="KB" loop="true">
-			<source src="../audio/Kate Bush - Running Up That Hill - Official Music Video.mp3" type="audio/mp3">
-		</audio>
 
 		<script>
-			var audio = document.getElementById("KB");
-			audio.volume = 1.0 ;
-		</script> -->
+
+		const audio = new Audio('../audio/Kate Bush - Running Up That Hill - Official Music Video.mp3');
+		audio.volume = 0.6 ;
+		audio.play();
+		
+		function jumpPlay() {
+			var audio = new Audio('../audio/smb_jump-small.wav');
+			audio.volume = 0.4 ;
+			audio.play();
+		}
+
+		function coinPlay() {
+			var audio = new Audio('../audio/smb_coin.wav');
+			audio.volume = 0.3 ;
+			audio.play();
+		}
+
+		function crashPlay() {
+			var audio = new Audio('../audio/WoodCrashesDistant FS022705.mp3');
+			audio.volume = 0.3 ;
+			audio.play();
+		}
+
+		</script>
+
 	
 		<script src="https://unpkg.com/three@0.130.0/build/three.js"></script>
 		<script src="https://unpkg.com/three@0.130.0/examples/js/controls/OrbitControls.js"></script>
@@ -43,8 +61,6 @@
 		<script src='./bitcoins.js'></script>
 		<script src='./nitro.js'></script>
 		<script src="./init.js"></script>
-		<script src='./audio.js'></script>
-
 
 	</body>
 </html>

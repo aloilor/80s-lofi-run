@@ -83,6 +83,7 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1 && car1.position.z > -714
 } else if (keyCode == 32 && keyFlagJump && car1.position.z > -714) {
     //console.log('space');
     keyFlagJump = false;
+    jumpPlay();
     new TWEEN.Tween(car1.position).to({y:car1.position.y + 0.6}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
     new TWEEN.Tween(car1.position).to({y:car1.position.y - 0.04}, 500).easing(TWEEN.Easing.Quadratic.In).onComplete(function() {keyFlagJump = true, car1.position.y = 0.1})).start();
     new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.25}, 400).easing(TWEEN.Easing.Quadratic.Out).chain(
