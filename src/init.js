@@ -99,8 +99,8 @@ function animate() {
       if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
       if (nitro) random_nitro_spawn(nitro);
       if (keepGoing && car1 && camera.position.z > -715){
-        camera.position.z -= 0.07;
-        car1.position.z -= 0.07;
+        camera.position.z -= carSpeed;
+        car1.position.z -= carSpeed;
         if (bubble){ //SET THE BUBBLE TO BE ATTACHED TO THE CAR
           bubble.position.x = car1.position.x;
           bubble.position.z = car1.position.z + 0.15;

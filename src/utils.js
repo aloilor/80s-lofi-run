@@ -15,6 +15,7 @@ var lives = 5;              // NUMBER OF LIVES OF THE CAR
 
 var keepGoing = true;        // VARIABLE TO KNOW IF THE CAR HAS STOPPED OR NOT
 
+var carSpeed = 0.09;
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
