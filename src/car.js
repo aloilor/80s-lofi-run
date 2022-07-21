@@ -87,7 +87,15 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1 && car1.position.z > -714
     new TWEEN.Tween(car1.position).to({y:car1.position.y - 0.04}, 500).easing(TWEEN.Easing.Quadratic.In).onComplete(function() {keyFlagJump = true, car1.position.y = 0.1})).start();
     new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.25}, 400).easing(TWEEN.Easing.Quadratic.Out).chain(
     new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.001}, 400).easing(TWEEN.Easing.Quadratic.In)).start();
-}
+} else if(keyCode == 37 && camera.position.x > -1 ) {
+    new TWEEN.Tween(camera.position).to({x:camera.position.x - 1}, 300).easing(TWEEN.Easing.Linear.None).start();
+} else if(keyCode == 39 && camera.position.x < 3) {
+    new TWEEN.Tween(camera.position).to({x:camera.position.x + 1}, 300).easing(TWEEN.Easing.Linear.None).start();
+} else if(keyCode == 38 && camera.position.y < 1.50) {
+    new TWEEN.Tween(camera.position).to({y:camera.position.y + 0.25}, 300).easing(TWEEN.Easing.Linear.None).start();
+} else if(keyCode == 40 && camera.position.y > 0.50) {
+    new TWEEN.Tween(camera.position).to({y:camera.position.y - 0.25}, 300).easing(TWEEN.Easing.Linear.None).start();
+} 
 };
 
 var once = true;
