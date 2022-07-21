@@ -19,7 +19,7 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
   car1.rotation.y = Math.PI / 10;
 
     gltf.scene.traverse( child => {
-        if ( child.material ) child.material.metalness = 0.65;
+        if ( child.material ) child.material.metalness = 0.80;
     } );
   car1.rotateY(THREE.Math.degToRad(180));
   scene.add( car1 );
@@ -74,7 +74,11 @@ loader.load( '../models/other entities/nitrogen_bottle/scene.gltf', function ( g
   nitro.receiveShadow = true;
 
   gltf.scene.traverse( child => {
-    if ( child.material ) child.material.metalness = 0.1;
+    if ( child.material ){
+      child.material.metalness = 0.1;
+      child.material.transparent = true;
+      //console.log(child.material.transparent);
+    } 
   } );
 })
 
@@ -108,6 +112,32 @@ loader.load( '../models/other entities/concrete_fence/scene.gltf', function ( gl
   } );
 })
 
+
+var bubble;
+var bubblePosX = carPosX;
+var bubblePosY = carPosY + 0.15;
+var bubblePosZ = carPosZ + 0.2;
+//LOADING INVINCIBILITY BUBBLE
+loader.load( '../models/other entities/energy_sphere/scene.gltf', function ( gltf ) {
+  bubble = gltf.scene;
+  bubble.scale.multiplyScalar(0.6); 
+  bubble.position.setX(bubblePosX);
+  bubble.position.setY(bubblePosY);
+  bubble.position.setZ(bubblePosZ+0.1);
+  //bubble.rotateY(THREE.Math.degToRad(90));
+  bubble.name = "bubble";
+  bubble.castShadow = true;
+  bubble.receiveShadow = true;
+
+  gltf.scene.traverse( child => {
+    if ( child.material ){
+      child.material.metalness = 0.4;
+      child.material.opacity = 0.4;
+      child.material.transparent = true;
+    } 
+  } );
+  //scene.add(bubble);
+})
 
 
 
