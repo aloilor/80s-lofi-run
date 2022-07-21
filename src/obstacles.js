@@ -28,7 +28,7 @@ function obs_spawn(fence){
     clone.position.set(x, fencePosY, obsStart);
     obstacles.push(clone);
     scene.add(clone);
-    console.log(obstacles.length);
+    //console.log(obstacles.length);
     obsStart -= gap_between_obstacles;
 }
 
@@ -45,7 +45,7 @@ function obs_collision_aux(car, i){
         Math.abs(car.position.z) <= Math.abs(obstacles[i].position.z) + obs_range &&
         car.position.y <= obstacles[i].position.y + 0.4
         ){
-            console.log("obstacle collide");
+            //console.log("obstacle collide");
             return true;
         }
     else return false;
@@ -110,6 +110,9 @@ function blink(car1, invFlag){       //FUNCTION TO MAKE THE CAR BLINK (DISAPPEAR
             child.material.transparent = true;
           } 
         } );
+        lives -=1;      // DECREMENT THE LIVES
+        var temp = livesArray.pop();
+        temp.remove();
         collisionFlag = false;
       }
 }

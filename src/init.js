@@ -83,7 +83,7 @@ var timeLoading = 0;
 clock.start();
 function animate() {
     timeLoading += 1;
-    console.log(lives);
+    //console.log(lives);
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
 
@@ -121,7 +121,6 @@ function animate() {
           //keepGoing = false;
           collisionFlag = true;
           collisionStart = clock.getElapsedTime();
-          lives -= 1;
           car1.traverse( child => {
             if ( child.material ){
               child.material.opacity = 0.0;
@@ -129,6 +128,8 @@ function animate() {
             } 
           } );
         }
+
+        if (lives == 0) keepGoing = false;
         bitcoin_collision(car1);
 
         //GETTING NITRO
