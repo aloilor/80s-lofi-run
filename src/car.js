@@ -97,8 +97,10 @@ function endAnimation(car1){
 
     if(once){
         once = false;
+        keyFlag = false;
+        keyFlagJump = false;
         new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 2}, 300).easing(TWEEN.Easing.Quadratic.Out).start();
         new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.3}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
-        new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.01}, 300).easing(TWEEN.Easing.Quadratic.In)).start();
+        new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.01}, 300).easing(TWEEN.Easing.Quadratic.In)).onComplete(function() {keyFlagJump = true, keyFlag = true}).start();
     }
 }
