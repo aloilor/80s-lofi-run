@@ -94,7 +94,6 @@ var once = true;
 
 function endAnimation(car1){
     car = car1.getObjectByName('root');
-
     if(once){
         once = false;
         keyFlag = false;
