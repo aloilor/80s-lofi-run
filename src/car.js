@@ -114,13 +114,17 @@ function endAnimation(car1){
 
 var explosionFlag = true;
 
-function explosionCar(){
+function explosionCar(car1){
 
     if(explosionCar){
         explosionCar = false;
         finishPlay();
+        car1.traverse( child => {
+            new TWEEN.Tween(child.position).to({z:child.position.z + 100}, 3000).easing(TWEEN.Easing.Quadratic.Out).start();
 
-        
+          } );
+
+
 
 
 
