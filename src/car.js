@@ -93,7 +93,6 @@ if (keyCode == 65 && keyFlag && car1.position.x != - 1 && car1.position.z > -714
     new TWEEN.Tween(camera.position).to({x:camera.position.x + 1}, 300).easing(TWEEN.Easing.Linear.None).start();
 } else if(keyCode == 38 && camera.position.y < 1.50) {
     new TWEEN.Tween(camera.position).to({y:camera.position.y + 0.25}, 300).easing(TWEEN.Easing.Linear.None).start();
-    console.log(camera.position.y);
 } else if(keyCode == 40 && camera.position.y > 0.50) {
     new TWEEN.Tween(camera.position).to({y:camera.position.y - 0.25}, 300).easing(TWEEN.Easing.Linear.None).start();
 } 
