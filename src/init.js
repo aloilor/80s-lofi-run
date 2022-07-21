@@ -143,6 +143,7 @@ function animate() {
       } else if(! keepGoing || car1 && camera.position.z < -715) {
         endAnimation(car1);
         TWEEN.update();
+        freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
       }
     }
 

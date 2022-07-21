@@ -28,3 +28,11 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
     });
     return lines;
 }
+
+
+function freeTheScene(obj){
+  for (i = 0; i < obj.length; i++){
+    scene.remove(obj[i]);
+    obj.splice(obj.indexOf(obj[i]), 1);
+  }
+}
