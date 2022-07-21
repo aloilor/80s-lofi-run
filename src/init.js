@@ -163,7 +163,7 @@ function animate() {
         bitcoin_collision(car1);
         nitro_collision(car1);
       } else if(! keepGoing || car1 && camera.position.z < -715) {
-        endAnimation(car1);
+        explosionCar(car1);
         TWEEN.update();
       }
     }
