@@ -118,6 +118,7 @@ function bitcoin_collision(car1){
             //bitcoins.splice(bitcoins.indexOf(bitcoins[i]), 1);
             score += 1;
             //console.log(score);
+            $("#idScore").text('Score: ' + score);
         }
     }
 }

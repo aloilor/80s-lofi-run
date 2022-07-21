@@ -7,7 +7,6 @@ var coinMid = -0.17;        // TO PUT THE COIN IN THE MIDDLE OF THE ROAD ()
 
 var score = 0;              // PLAYER SCORE -- IT WILL INCREMENT EVERY TIME THE PLAYER GETS A BITCOIN 
 
-var invincible = false;     // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE NITRO
 
 var max_distance = 70;      // MAX DISTANCE FROM THE CAMERA IN WHICH THE BITCOINS WILL SPAWN, 
                             // TO KEEP CLEAN AND FAST THE GAME
@@ -16,6 +15,7 @@ var lives = 5;              // NUMBER OF LIVES OF THE CAR
 
 var keepGoing = true;        // VARIABLE TO KNOW IF THE CAR HAS STOPPED OR NOT
 
+var carSpeed = 0.09;
 
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
@@ -28,4 +28,12 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
       dumpObject(child, lines, isLast, newPrefix);
     });
     return lines;
+}
+
+
+function freeTheScene(obj){
+  for (i = 0; i < obj.length; i++){
+    scene.remove(obj[i]);
+    obj.splice(obj.indexOf(obj[i]), 1);
+  }
 }

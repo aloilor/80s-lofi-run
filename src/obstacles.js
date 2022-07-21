@@ -28,7 +28,7 @@ function obs_spawn(fence){
     clone.position.set(x, fencePosY, obsStart);
     obstacles.push(clone);
     scene.add(clone);
-    console.log(obstacles.length);
+    //console.log(obstacles.length);
     obsStart -= gap_between_obstacles;
 }
 
@@ -82,6 +82,41 @@ function check_obs(obj){    //USEFUL FUNCTION TO CHECK IF OBJ IS GETTING SPAWNED
     return false;
 }
 
+function blink(car1, invFlag){       //FUNCTION TO MAKE THE CAR BLINK (DISAPPEAR AND REAPPEAR)
+                                    // ONCE IT COLLIDES WITH AN OBSTACLE (IF IT IS NOT INVULNERABLE)
+    
+    // TO MAKE THE CAR BLINK WHILE GOING INTO AN OBSTACLE
+    if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 == 0){
+        car1.traverse( child => {
+          if ( child.material ){
+            child.material.opacity = 1;
+            child.material.transparent = false;
+          } 
+        } );
+      }
+      //DISAPPEAR
+      if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 != 0){
+        car1.traverse( child => {
+          if ( child.material ){
+            child.material.opacity = 0.0;
+            child.material.transparent = true;
+          } 
+        } );
+      }
+      //REAPPEAR
+      if (collisionFlag && clock.getElapsedTime() >= collisionStart + collisionSpan){
+        car1.traverse( child => {
+          if ( child.material ){
+            child.material.opacity = 1000;
+            child.material.transparent = true;
+          } 
+        } );
+        lives -=1;      // DECREMENT THE LIVES
+        var temp = livesArray.pop();
+        temp.remove();
+        collisionFlag = false;
+      }
+}
 
 
 

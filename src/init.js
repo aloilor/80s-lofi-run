@@ -96,7 +96,7 @@ var timeLoading = 0;
 clock.start();
 function animate() {
     timeLoading += 1;
-    //console.log(timeLoading);
+    //console.log(lives);
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
     mars.rotation.y += 0.01;
@@ -113,58 +113,51 @@ function animate() {
       if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
       if (nitro) random_nitro_spawn(nitro);
       if (keepGoing && car1 && camera.position.z > -715){
-        camera.position.z -= 0.07;
-        car1.position.z -= 0.07;
+        camera.position.z -= carSpeed;
+        car1.position.z -= carSpeed;
+        if (bubble){ //SET THE BUBBLE TO BE ATTACHED TO THE CAR
+          bubble.position.x = car1.position.x;
+          bubble.position.z = car1.position.z + 0.15;
+          bubble.position.y = car1.position.y + 0.15;
+        }  
         rotateWheel(car1);
         TWEEN.update();
+        
+        blink(car1, invFlag);
 
-        // TO MAKE THE CAR BLINK WHILE GOING INTO AN OBSTACLE
-        if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 == 0){
-          car1.traverse( child => {
-            if ( child.material ){
-              child.material.opacity = 1.0;
-              child.material.transparent = false;
-            } 
-          } );
+        if (invFlag && clock.getElapsedTime() >= nitroStartInv + nitroSpan){
+          invFlag = false;
+          scene.remove(bubble);          
         }
 
-        if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 != 0){
-          car1.traverse( child => {
-            if ( child.material ){
-              child.material.opacity = 0.0;
-              child.material.transparent = true;
-            } 
-          } );
-        }
-
-        if (collisionFlag && clock.getElapsedTime() >= collisionStart + collisionSpan){
-          car1.traverse( child => {
-            if ( child.material ){
-              child.material.opacity = 1.0;
-              child.material.transparent = false;
-            } 
-          } );
-          collisionFlag = false;
-        }
-
-        if(obs_collision(car1)) {
+        //OBSTACLE COLLISION
+        if(obs_collision(car1) && !invFlag) {
           //keepGoing = false;
           collisionFlag = true;
           collisionStart = clock.getElapsedTime();
-
           car1.traverse( child => {
             if ( child.material ){
               child.material.opacity = 0.0;
               child.material.transparent = true;
             } 
           } );
-
         }
+
+        if (lives == 0) keepGoing = false;
         bitcoin_collision(car1);
-        nitro_collision(car1);
+
+        //GETTING NITRO
+        if (nitro_collision(car1)){
+          nitroStartInv = clock.getElapsedTime();
+          bubble.position.setX(bubblePosX);
+          bubble.position.setY(bubblePosY);
+          bubble.position.setZ(bubblePosZ);
+          scene.add(bubble);
+        }
       } else if(! keepGoing || car1 && camera.position.z < -715) {
         endAnimation(car1);
         TWEEN.update();
+        freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
       }
     }
 
