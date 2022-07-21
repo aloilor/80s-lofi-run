@@ -64,6 +64,19 @@ scene.add(dirLight.target);
 const helper = new THREE.DirectionalLightHelper(dirLight);
 //scene.add(helper);
 
+//MARS
+
+var marsColor = new THREE.TextureLoader().load( '../textures/marsColor.jpg' );
+var marsNormal = new THREE.TextureLoader().load( '../textures/marsNormal.png' );
+var marsSpecular = new THREE.TextureLoader().load( '../textures/marsSpecular.png' );
+var geometry = new THREE.SphereGeometry( 60, 160, 80);
+var material = new THREE.MeshPhongMaterial( { map: marsColor, bumpMap: marsNormal, specularMap: marsSpecular} );
+var mars = new THREE.Mesh( geometry, material );
+mars.position.x = -300;
+mars.position.y = 50;
+mars.position.z = -600;
+scene.add( mars );
+
 tweenCameraFlag = true;
 finishTweenCamera = false;
 
@@ -86,6 +99,7 @@ function animate() {
     //console.log(timeLoading);
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
+    mars.rotation.y += 0.01;
 
     if(timeLoading > 250){
     document.getElementById("loading").style.display = "none";

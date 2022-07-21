@@ -23,10 +23,18 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
     } );
   car1.rotateY(THREE.Math.degToRad(180));
   scene.add( car1 );
+  
+  var textureWheel = new THREE.TextureLoader().load( '../textures/PngItem_2081052.png' );
+  frontWheelLeft = car1.getObjectByName('Object_127');
+  textureWheel.encoding = THREE.sRGBEncoding;
+  frontWheelLeft.material.map = textureWheel;
+  frontWheelLeft.material.needsUpdate = true;
 
   // VISUALIZAING THE HIERARCHY OF THE CAR
   // console.log(dumpObject(car1).join('\n'));
 });
+
+
 
 
 
@@ -79,7 +87,6 @@ loader.load( '../models/maps/80s-style/neonroad_endless_loop/scene.gltf', functi
 });
 
 
-// LOADING FENCE MODEL 
 
 var fence;
 var fencePosX = 0;

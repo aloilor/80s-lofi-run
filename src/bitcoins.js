@@ -142,7 +142,7 @@ function rotateBitcoin() {
         var bottomPosition = new THREE.Vector3(bitcoins[i].position.x - 0.5, bitcoins[i].position.y - 0.5  , bitcoins[i].position.z - 0.5);
 
         axisBitcoin.copy( topPosition ).sub( bottomPosition );
-        bitcoins[i].rotateOnAxis( axisBitcoin, Math.PI / 180);
+        bitcoins[i].rotateOnAxis( axisBitcoin, Math.PI / 270);
     }
 }
 
