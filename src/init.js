@@ -83,7 +83,7 @@ var timeLoading = 0;
 clock.start();
 function animate() {
     timeLoading += 1;
-    //console.log(nitroStartInv, nitroSpan, clock.getElapsedTime());
+    console.log(lives);
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
 
@@ -101,42 +101,15 @@ function animate() {
       if (keepGoing && car1 && camera.position.z > -715){
         camera.position.z -= 0.07;
         car1.position.z -= 0.07;
-        if (bubble){
+        if (bubble){ //SET THE BUBBLE TO BE ATTACHED TO THE CAR
           bubble.position.x = car1.position.x;
           bubble.position.z = car1.position.z + 0.15;
           bubble.position.y = car1.position.y + 0.15;
         }  
         rotateWheel(car1);
         TWEEN.update();
-
-        // TO MAKE THE CAR BLINK WHILE GOING INTO AN OBSTACLE
-        if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 == 0){
-          car1.traverse( child => {
-            if ( child.material ){
-              child.material.opacity = 1;
-              child.material.transparent = false;
-            } 
-          } );
-        }
-        //DISAPPEAR
-        if (collisionFlag && clock.getElapsedTime() < collisionStart + collisionSpan && timeLoading%25 != 0){
-          car1.traverse( child => {
-            if ( child.material ){
-              child.material.opacity = 0.0;
-              child.material.transparent = true;
-            } 
-          } );
-        }
-        //REAPPEAR
-        if (collisionFlag && clock.getElapsedTime() >= collisionStart + collisionSpan){
-          car1.traverse( child => {
-            if ( child.material ){
-              child.material.opacity = 1000;
-              child.material.transparent = true;
-            } 
-          } );
-          collisionFlag = false;
-        }
+        
+        blink(car1, invFlag);
 
         if (invFlag && clock.getElapsedTime() >= nitroStartInv + nitroSpan){
           invFlag = false;
@@ -144,18 +117,17 @@ function animate() {
         }
 
         //OBSTACLE COLLISION
-        if(obs_collision(car1)) {
+        if(obs_collision(car1) && !invFlag) {
           //keepGoing = false;
           collisionFlag = true;
           collisionStart = clock.getElapsedTime();
-
+          lives -= 1;
           car1.traverse( child => {
             if ( child.material ){
               child.material.opacity = 0.0;
               child.material.transparent = true;
             } 
           } );
-
         }
         bitcoin_collision(car1);
 
