@@ -54,19 +54,23 @@ scene.add(dirLight.target);
 const helper = new THREE.DirectionalLightHelper(dirLight);
 //scene.add(helper);
 
-var earth = new THREE.TextureLoader().load( '../textures/2k_mars.jpg' );
-const geometry = new THREE.SphereGeometry( 15, 40, 20);
-const material = new THREE.MeshBasicMaterial( { map: earth, overdraw: 0.5 } );
-const sphere = new THREE.Mesh( geometry, material );
-sphere.position.x = -150;
-sphere.position.y = 20;
-sphere.position.z = -200;
-scene.add( sphere );
+//MARS
+
+var marsColor = new THREE.TextureLoader().load( '../textures/marsColor.jpg' );
+var marsNormal = new THREE.TextureLoader().load( '../textures/marsNormal.png' );
+var marsSpecular = new THREE.TextureLoader().load( '../textures/marsSpecular.png' );
+var geometry = new THREE.SphereGeometry( 60, 160, 80);
+var material = new THREE.MeshPhongMaterial( { map: marsColor, bumpMap: marsNormal, specularMap: marsSpecular} );
+var mars = new THREE.Mesh( geometry, material );
+mars.position.x = -300;
+mars.position.y = 50;
+mars.position.z = -600;
+scene.add( mars );
 
 function animate() {
     renderer.render( scene, camera );
     requestAnimationFrame( animate );
-    sphere.rotation.y += 0.01;
+    mars.rotation.y += 0.01;
 
     if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
     if (nitro) random_nitro_spawn(nitro);

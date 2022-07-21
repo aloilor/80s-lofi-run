@@ -24,15 +24,6 @@ loader.load( '../models/cars/vintage_sport_car/scene.gltf', function ( gltf ) {
     } );
   car1.rotateY(THREE.Math.degToRad(180));
   scene.add( car1 );
-
-  var texture = new THREE.TextureLoader().load( '../textures/pngkey.com-flames-png-1564108.png' );
-  texture.encoding = THREE.sRGBEncoding;
-  texture.flipY = true;
-  texture.repeat.set(0.9, 0.9);
-  chassis = car1.getObjectByName('Object_148');
-  chassis.material.map = texture;
-  chassis.material.needsUpdate = true;
-
   
   var textureWheel = new THREE.TextureLoader().load( '../textures/PngItem_2081052.png' );
   frontWheelLeft = car1.getObjectByName('Object_127');
@@ -99,19 +90,6 @@ loader.load( '../models/maps/80s-style/neonroad_endless_loop/scene.gltf', functi
 });
 
 
-// LOADING FENCE MODEL 
-
-// var loader = new THREE.TextureLoader();
-// loader.load( '../textures/pngkey.com-flames-png-1564108.png', function ( texture ) {
-
-//     var geometry = new THREE.SphereGeometry( 200, 200, 200);
-//     geometry.setPosition(10, 10, 10);
-
-//     var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
-//     var mesh = new THREE.Mesh( geometry, material );
-//     scene.add( mesh );
-
-// } );
 
 
 
