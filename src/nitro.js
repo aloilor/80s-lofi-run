@@ -59,6 +59,7 @@ function nitro_collision_aux(car, i){
         car1.position.y < nitros[i].position.y + 0.5 &&
         car1.position.y > nitros[i].position.y - 0.5
         ){
+            invinciblePlay();
             return true;
         }
     else return false; 
