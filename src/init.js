@@ -178,7 +178,7 @@ function animate() {
           scene.add(bubble);
         }
       
-        if (!keepGoing && camera.position.z >= -715 ){
+        if (!keepGoing){
           freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
           if(explosionFlag){
             explosionFlag = false;

@@ -32,9 +32,12 @@ function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 
 
 function freeTheScene(obj){
-  for (i = 0; i < obj.length; i++){
-    scene.remove(obj[i]);
-    obj.splice(obj.indexOf(obj[i]), 1);
-    console.log("freeing");
+  while (obj.length > 0){
+    for (i = 0; i < obj.length; i++){
+      scene.remove(obj[i]);
+      obj.splice(obj.indexOf(obj[i]), 1);
+      console.log("freeing");
+      console.log(obj.length);
+    }
   }
 }
