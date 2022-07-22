@@ -155,12 +155,20 @@ function animate() {
           bubble.position.setZ(bubblePosZ);
           scene.add(bubble);
         }
-      } else if(! keepGoing || car1 && camera.position.z < -715) {
-        if(explosionFlag){
-        explosionFlag = false;
-        explosionCar(car1);
-        TWEEN.update();
+      
+        if (!keepGoing && camera.position.z >= -715 ){
+          if(explosionFlag){
+            explosionFlag = false;
+            explosionCar(car1);
+            TWEEN.update();
+            freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
+          }
         }
+      
+      } else if(car1 && camera.position.z < -715) {
+        endAnimation(car1);
+        TWEEN.update();
+
         freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
       }
     }
