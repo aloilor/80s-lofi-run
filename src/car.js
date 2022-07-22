@@ -114,6 +114,8 @@ function endAnimation(car1){
 
 
 function explosionCar(car1){
+    
+        car = car1.getObjectByName('root');
         finishPlay();
         new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 2}, 300).easing(TWEEN.Easing.Quadratic.Out).start();
         new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.3}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(

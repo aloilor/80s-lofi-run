@@ -179,19 +179,18 @@ function animate() {
         }
       
         if (!keepGoing && camera.position.z >= -715 ){
+          freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
           if(explosionFlag){
             explosionFlag = false;
             explosionCar(car1);
             TWEEN.update();
-            freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
           }
         }
       
       } else if(car1 && camera.position.z < -715) {
+        freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
         endAnimation(car1);
         TWEEN.update();
-
-        freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
       }
     }
 
