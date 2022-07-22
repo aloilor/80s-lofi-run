@@ -1,4 +1,6 @@
-// import * from "./bitcoins.js";
+// import * from "./bitcoins.js";ù
+// import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass';
+// import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer';
 
 
 // INITIALIZING THE SCENE AND OTHER USEFUL THINGS SUCH AS LIGHT AND LOADERS
@@ -41,9 +43,19 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 // INITIALIZING POST PROCESSING FILTERS
-//const renderScene = new THREE.RenderPass(scene, camera);
-//const composer = new THREE.EffectComposer(renderer);
-//composer.addPass(renderScene);
+
+const renderScene = new THREE.RenderPass(scene, camera);
+const composer = new THREE.EffectComposer(renderer);
+composer.addPass(renderScene);
+
+const bloomPass = new THREE.UnrealBloomPass(
+  new THREE.Vector2(window.innerWidth, window.innerHeight),
+  1.0,
+  0.1,
+  0.1
+);
+
+composer.addPass(bloomPass);
 
 // AMBIENT LIGHT
 const colorA = 0xffdbdb;
@@ -98,7 +110,8 @@ clock.start();
 function animate() {
     timeLoading += 1;
     //console.log(lives);
-    renderer.render( scene, camera );
+    //renderer.render( scene, camera );
+    composer.render();
     requestAnimationFrame( animate );
     mars.rotation.y += 0.01;
 
