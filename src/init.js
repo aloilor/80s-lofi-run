@@ -92,6 +92,7 @@ function cameraTween(){
   }
 }
 
+var explosionFlag = true;
 var timeLoading = 0;
 clock.start();
 function animate() {
@@ -155,8 +156,11 @@ function animate() {
           scene.add(bubble);
         }
       } else if(! keepGoing || car1 && camera.position.z < -715) {
-        endAnimation(car1);
+        if(explosionFlag){
+        explosionFlag = false;
+        explosionCar(car1);
         TWEEN.update();
+        }
         freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
       }
     }

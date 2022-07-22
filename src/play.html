@@ -57,6 +57,13 @@
 			audio.play();
 		}
 
+		function invinciblePlay(){
+			var audio = new Audio('../audio/Super Mario Bros. Star Theme (Remix).mp3');
+			audio.volume = 0.3 ;
+			audio.play();
+
+		}
+
 		function coinPlay() {
 			var audio = new Audio('../audio/smb_coin.wav');
 			audio.volume = 0.05 ;
@@ -66,6 +73,18 @@
 		function crashPlay() {
 			var audio = new Audio('../audio/WoodCrashesDistant FS022705.mp3');
 			audio.volume = 0.05 ;
+			audio.play();
+		}
+
+		function finishPlay() {
+			var audio = new Audio('../audio/smb_mariodie.wav');
+			audio.volume = 0.5 ;
+			audio.play();
+		}
+
+		function endPlay() {
+			var audio = new Audio('../audio/smb_stage_clear.wav');
+			audio.volume = 0.3 ;
 			audio.play();
 		}
 

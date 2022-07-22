@@ -104,9 +104,24 @@ var once = true;
 function endAnimation(car1){
     car = car1.getObjectByName('root');
     if(once){
+        endPlay();
         once = false;
         new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 2}, 300).easing(TWEEN.Easing.Quadratic.Out).start();
         new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.3}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
         new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.01}, 300).easing(TWEEN.Easing.Quadratic.In)).start();
     }
+}
+
+
+function explosionCar(car1){
+        finishPlay();
+        new TWEEN.Tween(car.rotation).to({z:car.rotation.z + Math.PI / 2}, 300).easing(TWEEN.Easing.Quadratic.Out).start();
+        new TWEEN.Tween(car.rotation).to({x:car.rotation.x + 0.3}, 300).easing(TWEEN.Easing.Quadratic.Out).chain(
+        new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.01}, 1000).easing(TWEEN.Easing.Quadratic.In)).onComplete(function() {
+            car1.traverse( child => {
+                new TWEEN.Tween(child.position).to({x:child.position.x + Math.random()}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
+                new TWEEN.Tween(child.position).to({y:child.position.y + Math.random()}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
+                new TWEEN.Tween(child.position).to({z:child.position.z + Math.random()}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
+              } );
+        }).start();
 }
