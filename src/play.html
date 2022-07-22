@@ -15,8 +15,15 @@
 
 	</head>
 	<body>
+		<div class = "container" id ="audioContainer">			
+			<img src = "../images/audio.png" id = "audio" class = "position-absolute start-0" onclick=" mute(); ">
+			<img src = "../images/audio-mute.png" id = "audioMute" class = "position-absolute start-0" onclick=" unMute(); ">
 
-		<div class = "container" id = "board">
+		</div>
+
+		<div class = "container " id = "board">
+
+
 			<div class = "row">
 				<div class = "col">
 					<h2 class="text-danger" id = "idScore"> Score: 0 </h2>						
@@ -46,48 +53,63 @@
 		</div>
 
 		<script>
+		var muted = false;
 
-		const audio = new Audio('../audio/Kate Bush - Running Up That Hill - Official Music Video.mp3');
+		var audio = new Audio('../audio/Kate Bush - Running Up That Hill - Official Music Video.mp3');
 		audio.volume = 0.6 ;
-		audio.play();
+		if (!muted) audio.play();
 		
 		function jumpPlay() {
 			var audio = new Audio('../audio/smb_jump-small.wav');
 			audio.volume = 0.1 ;
-			audio.play();
+			if (!muted) audio.play();
 		}
 
 		function invinciblePlay(){
 			var audio = new Audio('../audio/Super Mario Bros. Star Theme (Remix).mp3');
 			audio.volume = 0.1 ;
-			audio.play();
+			if (!muted) audio.play();
 
 		}
 
 		function coinPlay() {
 			var audio = new Audio('../audio/smb_coin.wav');
 			audio.volume = 0.03 ;
-			audio.play();
+			if (!muted) audio.play();
 		}
 
 		function crashPlay() {
 			var audio = new Audio('../audio/WoodCrashesDistant FS022705.mp3');
 			audio.volume = 0.1 ;
-			audio.play();
+			if (!muted) audio.play();
 		}
 
 		function finishPlay() {
 			var audio = new Audio('../audio/smb_mariodie.wav');
 			audio.volume = 0.3 ;
-			audio.play();
+			if (!muted) audio.play();
 		}
 
 		function endPlay() {
 			var audio = new Audio('../audio/smb_stage_clear.wav');
 			audio.volume = 0.2 ;
-			audio.play();
+			if (!muted) audio.play();
 		}
 
+		function mute(){
+			audio.volume = 0.0;
+			muted = true;
+			document.getElementById("audio").style.visibility = "hidden";
+			document.getElementById("audioMute").style.visibility = "visible";
+
+		}
+
+		function unMute(){
+			audio.volume = 0.6;
+			muted = false;
+			document.getElementById("audio").style.visibility = "visible";
+			document.getElementById("audioMute").style.visibility = "hidden";
+		}
 		</script>
 
 	

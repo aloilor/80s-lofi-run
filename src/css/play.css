@@ -88,11 +88,30 @@ html, body {
   
   #board {
 	position: absolute;
-	margin-top: 5%;
-	margin-left: -25%;
+	margin-top: 10%;
+	margin-left: -15%;
   }
 
   #idLife0, #idLife1, #idLife2, #idLife3, #idLife4{
 	width: 25px;
 	height: 25px;
   }
+
+	
+#audio{
+	position: absolute;
+	width: 2.5%;
+	margin-top: 2%;
+	margin-left: 2%;
+	cursor: pointer;
+	visibility: visible;	
+}
+
+#audioMute{
+	position: absolute;
+	width: 4%;
+	margin-top: 2%;
+	margin-left: 2%;
+	cursor: pointer;
+	visibility: hidden;	
+}

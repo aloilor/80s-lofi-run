@@ -9,7 +9,6 @@ function play(){
 }
 
 
-
 function decreaseDifficulty(){
     var diff = document.getElementById('difficulty').innerHTML;
     if (diff == "NORMAL"){
@@ -18,7 +17,6 @@ function decreaseDifficulty(){
     if (diff == "EXTREME"){
         document.getElementById('difficulty').innerHTML = "NORMAL";
     }
-
 }
 
 function increaseDifficulty(){
