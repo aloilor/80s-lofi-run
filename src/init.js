@@ -50,21 +50,21 @@ composer.addPass(renderScene);
 
 const bloomPass = new THREE.UnrealBloomPass(
   new THREE.Vector2(window.innerWidth, window.innerHeight),
-  0.5,
-  0.1,
-  0.1
+  0.45, //intensity
+  0.1, // ratio of bloom
+  0.1 //pixel che emette il bloom
 );
 
 composer.addPass(bloomPass);
 
-const hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
-hblur.uniforms[ 'h' ].value = 1 / ( window.innerWidth / 1 );
-composer.addPass( hblur );
+// const hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
+// hblur.uniforms[ 'h' ].value = 1 / ( window.innerWidth / 1 );
+// composer.addPass( hblur );
 
-const vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
-vblur.uniforms[ 'v' ].value = 1 / ( window.innerHeight / 1 );
-vblur.renderToScreen = true;
-composer.addPass( vblur );
+// const vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
+// vblur.uniforms[ 'v' ].value = 1 / ( window.innerHeight / 1 );
+// vblur.renderToScreen = true;
+// composer.addPass( vblur );
 
 // AMBIENT LIGHT
 const colorA = 0xffdbdb;
