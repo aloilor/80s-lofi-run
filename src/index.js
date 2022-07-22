@@ -1,11 +1,32 @@
 function play(){
-    window.location.href = "./src/play.html";
+    var diff = document.getElementById('difficulty').innerHTML;
+    if (diff == "EXTREME")
+        window.location.href = "./src/play.html?diff=EXTREME";
+    if (diff == "NORMAL")
+        window.location.href = "./src/play.html?diff=NORMAL";
+    if (diff == "EASY")
+        window.location.href = "./src/play.html?diff=EASY";
 }
 
-function easy(){
-    document.getElementById("difficulty").innerHTML = 'EASY';
+
+
+function decreaseDifficulty(){
+    var diff = document.getElementById('difficulty').innerHTML;
+    if (diff == "NORMAL"){
+        document.getElementById('difficulty').innerHTML = "EASY";
+    }
+    if (diff == "EXTREME"){
+        document.getElementById('difficulty').innerHTML = "NORMAL";
+    }
+
 }
 
-function extreme(){
-    document.getElementById("difficulty").innerHTML = 'EXTREME';
+function increaseDifficulty(){
+    var diff = document.getElementById('difficulty').innerHTML;
+    if (diff == "NORMAL"){
+        document.getElementById('difficulty').innerHTML = "EXTREME";
+    }
+    if (diff == "EASY"){
+        document.getElementById('difficulty').innerHTML = "NORMAL";
+    }
 }

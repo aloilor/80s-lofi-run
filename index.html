@@ -41,27 +41,25 @@
 				</div>
 			
 				<div class = "col">
-					<h1>How to play:</h1>
 				</div>
 
-				<div class = "col">
-					<h1>How to play:</h1>
+				<div class = "col" id = "extras">
+					<h3> Extras:</h3>
+					<h5>Use the directional arrows </h5>
+					<h5>to move the camera on </h5>
+					<h5> both the x and </h5>
+					<h5>y axis </h5>
 				</div>
 			</div>
 
 
-
-			<div class = "row" id = "BTNS">
-				<div class = "col">
-					<div class = "button" id = "btnEASY"> EASY </div>
-				</div>
-
-				<div class = "col">
-					<div class = "button" id = "btnNORMAL"> NORMAL </div>
-				</div>
-
-				<div class = "col">
-					<div class = "button" id = "btnEXTREME"> EXTREME </div>
+			<div class = "row" >
+				<div class = "container" id = "selectDifficulty">
+					<h2>Select difficulty</h2>
+					<h3><span id="difficulty">NORMAL</span></h3>
+					<p> <i class="arrow right" onclick = "increaseDifficulty()"></i></p>
+					<p> <i class="arrow left" onclick = "decreaseDifficulty()"></i></p>
+					<div class = "button" id = "btnPLAY" style="position: absolute;" onclick = "play()">PLAY</div>
 				</div>
 			</div>
 
