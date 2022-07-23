@@ -45,32 +45,27 @@
 					<h5>to move the camera on </h5>
 					<h5> both the x and </h5>
 					<h5>y axis </h5>
+					<br>
+					<input class="form-check-input" onclick = "changeBloom()" type="checkbox" value="true" id="checkBloom" checked>
+					<label class="form-check-label" for="flexCheckDefault">
+				 	<h5>Bloom</h5>
+
+					 <input class="form-check-input" onclick = "changeBlur()" type="checkbox" value="false" id="checkBlur">
+					 <label class="form-check-label" for="flexCheckDefault">
+					 <h5>Blur</h5>
 				</div>
 			</div>
 
-			<div class="col" id = "effects">
-				<input class="form-check-input" onclick = "changeBloom()" type="checkbox" value="true" id="checkBloom" checked>
-				<label class="form-check-label" for="flexCheckDefault">
-				 <h5>Bloom</h5>
-			  </div>
-
-			  <div class="col" id = "effects">
-				<input class="form-check-input" onclick = "changeBlur()" type="checkbox" value="false" id="checkBlur">
-				<label class="form-check-label" for="flexCheckDefault">
-				<h5>Blur</h5>
-				</label>
-			  </div>
-
-
-
-			<div class = "row" >
-				<div class = "container" id = "selectDifficulty">
-					<h2>Select difficulty</h2>
-					<h3><span id="difficulty">NORMAL</span></h3>
-					<p> <i class="arrow right" onclick = "increaseDifficulty()"></i></p>
-					<p> <i class="arrow left" onclick = "decreaseDifficulty()"></i></p>
+			<div class = "row justify-content-md-center" id = "selectDifficulty">
+					<h2 class = "glow" id = "diffSelection">Select difficulty</h2>
+					<div class = "col"></div>
+					<div class = "col d-flex flex-row justify-content-center" id = "diffArrows">	
+						<i class="bi bi-arrow-left-circle glow p-2" id = "leftArrow" onclick = "decreaseDifficulty()"></i>
+						<h3 class = "glow " id="difficulty">NORMAL</h3>
+						<i class="bi bi-arrow-right-circle glow p-2" id = "rightArrow" onclick = "increaseDifficulty()"></i>
+					</div>
+					<div class = "col"></div>
 					<div class = "button" id = "btnPLAY" style="position: absolute;" onclick = "play()">PLAY</div>
-				</div>
 			</div>
 
 		</div>
