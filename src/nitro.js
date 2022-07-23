@@ -83,6 +83,7 @@ function nitro_check(obj){
 }
 
 
+// FUNCTION THAT ATTRACTS ALL THE COINS IN A RANGE TO THE CAR, WHEN INVINCIBLE  
 function nitro_catch(car, bitcoins){
     for (i = 0; i < bitcoins.length; i++){
         if (Math.abs(car.position.z) + 10 >= Math.abs(bitcoins[i].position.z) && 

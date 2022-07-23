@@ -213,12 +213,15 @@ function animate() {
             explosionCar(car1);
             TWEEN.update();
           }
+          document.getElementById("gameOver").style.visibility = "visible";
         }
       
-      } else if(car1 && camera.position.z < -715) {
+      } else if(car1 && camera.position.z <= -715) {
         freeTheScene(nitros); freeTheScene(obstacles); freeTheScene(bitcoins);
         endAnimation(car1);
         TWEEN.update();
+        document.getElementById("victory").style.visibility = "visible";
+
       }
     }
 

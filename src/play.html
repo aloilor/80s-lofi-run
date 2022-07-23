@@ -22,8 +22,6 @@
 		</div>
 
 		<div class = "container " id = "board">
-
-
 			<div class = "row">
 				<div class = "col">
 					<h2 class="text-danger" id = "idScore"> Score: 0 </h2>						
@@ -34,11 +32,26 @@
 				<div class = "col">
 					<div class = "container" id = "lives">
 						<img src = "../images/life.png" id = "idLife0">
-
 					</div>
 				</div>
 			</div>
 		</div>
+ 
+		<div class = "row">
+			<div class = "col" id = "gameOver">
+				<img src = "../images/gameOver.png" id = "gameOverIMG">
+				<div class = "button" id = "btnGOBACK" style="position: absolute;" onclick = "goBack();"> GO BACK </div>
+			</div>
+		</div>
+
+		<div class = "row">
+			<div class = "col" id = "victory">
+				<img src = "../images/victory.png" id = "victoryIMG">
+				<div class = "button" id = "btnGOBACK" style="position: absolute;" onclick = "goBack();"> CONTINUE? </div>
+
+			</div>
+		</div>
+		
 
 		<div class="container" id='loading'>
 			<h1>
@@ -86,13 +99,13 @@
 
 		function finishPlay() {
 			var audio = new Audio('../audio/smb_mariodie.wav');
-			audio.volume = 0.3 ;
+			audio.volume = 0.6 ;
 			if (!muted) audio.play();
 		}
 
 		function endPlay() {
 			var audio = new Audio('../audio/smb_stage_clear.wav');
-			audio.volume = 0.2 ;
+			audio.volume = 0.5 ;
 			if (!muted) audio.play();
 		}
 
@@ -109,6 +122,10 @@
 			muted = false;
 			document.getElementById("audio").style.visibility = "visible";
 			document.getElementById("audioMute").style.visibility = "hidden";
+		}
+
+		function goBack(){
+			window.location.href = "../index.html";
 		}
 		</script>
 
