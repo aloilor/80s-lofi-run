@@ -2,6 +2,22 @@
 // import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass';
 // import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer';
 
+const bloom = urlParams.get("bloom");
+const blur = urlParams.get("blur");
+var checkBloom;
+var checkBlur;
+
+if(bloom == "true"){
+  checkBloom = true;
+} else {
+  checkBloom = false;
+}
+
+if(blur == "true"){
+  checkBlur = true;
+} else {
+  checkBlur = false;
+}
 
 // INITIALIZING THE SCENE AND OTHER USEFUL THINGS SUCH AS LIGHT AND LOADERS
 //SCENE INITIALIZATION
@@ -48,23 +64,28 @@ const renderScene = new THREE.RenderPass(scene, camera);
 const composer = new THREE.EffectComposer(renderer);
 composer.addPass(renderScene);
 
-const bloomPass = new THREE.UnrealBloomPass(
-  new THREE.Vector2(window.innerWidth, window.innerHeight),
-  0.45, //intensity
-  0.1, // ratio of bloom
-  0.1 //pixel che emette il bloom
-);
+if(checkBloom){
+  const bloomPass = new THREE.UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    0.45, //intensity
+    0.1, // ratio of bloom
+    0.1 //pixel che emette il bloom
+  );
 
-composer.addPass(bloomPass);
+  composer.addPass(bloomPass);
+}
 
-// const hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
-// hblur.uniforms[ 'h' ].value = 1 / ( window.innerWidth / 1 );
-// composer.addPass( hblur );
 
-// const vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
-// vblur.uniforms[ 'v' ].value = 1 / ( window.innerHeight / 1 );
-// vblur.renderToScreen = true;
-// composer.addPass( vblur );
+if(checkBlur){
+  const hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
+  hblur.uniforms[ 'h' ].value = 1 / ( window.innerWidth / 1 );
+  composer.addPass( hblur );
+
+  const vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
+  vblur.uniforms[ 'v' ].value = 1 / ( window.innerHeight / 1 );
+  vblur.renderToScreen = true;
+  composer.addPass( vblur );
+}
 
 // AMBIENT LIGHT
 const colorA = 0xffdbdb;

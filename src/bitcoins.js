@@ -82,7 +82,7 @@ function random_bitcoin_spawn(bitcoin){
 // CLEANUP FUNCTION - TO REMOVE UNUSED BITCOINS (THE ONES WE ALREADY SURPASSED) FROM THE SCENE
 // AND TO KEEP EVERYTHING FAST AND CLEAN
 function bitcoin_free(){
-        for (i = 0; i <= bitcoins.length; i++){
+        for (i = 0; i < bitcoins.length; i++){
             if (bitcoins[i].position.z > camera.position.z+1){
                 bitcoins.splice(bitcoins.indexOf(bitcoins[i]), 1);
                 // console.log(bitcoins.length);
