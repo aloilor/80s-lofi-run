@@ -17,6 +17,8 @@ var keepGoing = true;        // VARIABLE TO KNOW IF THE CAR HAS STOPPED OR NOT
 
 var carSpeed = 0.09;
 
+var invFlag = false; // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE NITRO
+
 // FUNCTION TO RETURN THE HIERARCHY OF THE OBJECTS
 function dumpObject(obj, lines = [], isLast = true, prefix = '') {
     const localPrefix = isLast ? '└─' : '├─';

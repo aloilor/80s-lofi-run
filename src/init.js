@@ -95,7 +95,7 @@ var material = new THREE.MeshPhongMaterial( { map: marsColor, bumpMap: marsNorma
 var mars = new THREE.Mesh( geometry, material );
 mars.position.x = -300;
 mars.position.y = 50;
-mars.position.z = -600;
+mars.position.z = -175;
 scene.add( mars );
 
 tweenCameraFlag = true;
@@ -136,6 +136,8 @@ function animate() {
       if (bitcoin) {random_bitcoin_spawn(bitcoin); rotateBitcoin();}
       if (nitro) random_nitro_spawn(nitro);
       if (keepGoing && car1 && camera.position.z > -715){
+
+        mars.position.z -= carSpeed+0.03;
         camera.position.z -= carSpeed;
         car1.position.z -= carSpeed;
         if (bubble){ //SET THE BUBBLE TO BE ATTACHED TO THE CAR
@@ -147,6 +149,11 @@ function animate() {
         TWEEN.update();
         
         blink(car1, invFlag);
+        
+        if (invFlag){
+          nitro_catch(car1, bitcoins);
+          TWEEN.update();
+        } 
 
         if (invFlag && clock.getElapsedTime() >= nitroStartInv + nitroSpan){
           invFlag = false;

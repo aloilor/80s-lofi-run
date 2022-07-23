@@ -122,7 +122,7 @@ function explosionCar(car1){
         new TWEEN.Tween(car.rotation).to({x:car.rotation.x - 0.01}, 1000).easing(TWEEN.Easing.Quadratic.In)).onComplete(function() {
             car1.traverse( child => {
                 new TWEEN.Tween(child.position).to({x:child.position.x + Math.random()}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
-                new TWEEN.Tween(child.position).to({y:child.position.y + Math.random()}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
+                new TWEEN.Tween(child.position).to({y:child.position.y + Math.random()/2}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
                 new TWEEN.Tween(child.position).to({z:child.position.z + Math.random()}, 1000).easing(TWEEN.Easing.Exponential.Out).start();
               } );
         }).start();

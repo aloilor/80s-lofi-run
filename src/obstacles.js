@@ -45,7 +45,7 @@ function obs_collision_aux(car, i){
         Math.abs(car.position.z) <= Math.abs(obstacles[i].position.z) + obs_range &&
         car.position.y <= obstacles[i].position.y + 0.4
         ){
-            crashPlay();
+            if (!invFlag)crashPlay();
             return true;
         }
     else return false;

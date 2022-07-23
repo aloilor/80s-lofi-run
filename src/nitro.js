@@ -14,7 +14,6 @@ var poss_x_nitro_pos = [            // USEFUL ARRAY TO KEEP TRACK OF THE X POSIT
 var nitroStartInv = 0;
 var nitroSpan = 3;
 var nitro_range = 0.35; // RANGE IN WHICH THE NITRO WILL BE TAKEN
-var invFlag = false; // THE CAR IS INVINCIBLE FOR 3SECS ONCE YOU TAKE THE NITRO
 
 
 function nitro_spawn(nitro){
@@ -81,4 +80,17 @@ function nitro_collision(car){
 
 function nitro_check(obj){
     
+}
+
+
+function nitro_catch(car, bitcoins){
+    for (i = 0; i < bitcoins.length; i++){
+        if (Math.abs(car.position.z) + 10 >= Math.abs(bitcoins[i].position.z) && 
+        !(Math.abs(car1.position.z) >= Math.abs(bitcoins[i].position.z))
+        ){
+            new TWEEN.Tween(bitcoins[i].position).to({x:car.position.x }, 125).easing(TWEEN.Easing.Linear.None).start();
+            new TWEEN.Tween(bitcoins[i].position).to({z:car.position.z - 1}, 125).easing(TWEEN.Easing.Linear.None).start();
+            new TWEEN.Tween(bitcoins[i].position).to({y:car.position.y }, 125).easing(TWEEN.Easing.Linear.None).start();
+        }
+    }
 }
