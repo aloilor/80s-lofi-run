@@ -1,5 +1,5 @@
 # 80s Lo-Fi Run
-
+![Alt text](images/wallpaper.png)
 
 ## Authors
 * Aloisi Lorenzo - 1836344
