@@ -1,5 +1,5 @@
 # 80s Lo-Fi Run
-![Alt text](images/wallpaper.png)
+![Alt text](images/raedme-index.png)
 
 ## Authors
 * Aloisi Lorenzo - 1836344
@@ -7,7 +7,7 @@
 
 ## How to run
 * Github Page : https://sapienzainteractivegraphicscourse.github.io/final-project-ditommaso-aloisi/
-* Local : clone the repository or download it; open **index.html** with your browser to play.
+* Local : clone the repository or download it; create a localhost server; open **index.html** with your browser to play.
 
 ## How to play:
 * A : Turn left
