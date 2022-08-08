@@ -7,7 +7,7 @@
 
 ## How to run
 * Github Page : https://sapienzainteractivegraphicscourse.github.io/final-project-ditommaso-aloisi/
-* Local : clone the repository or download it; open **index.html** with your browser to play.
+* Local : clone the repository or download it; create a Python server on localhost; open **index.html** with your browser to play.
 
 ## How to play:
 * A : Turn left
