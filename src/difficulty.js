@@ -5,15 +5,15 @@ const diff = urlParams.get("diff");
 
 if (diff == "EASY"){
     lives = 5;
-    carSpeed = 0.09;
+    carSpeed = 0.14;
 }
 
 if (diff == "NORMAL"){
     lives = 3;
-    carSpeed = 0.12;
+    carSpeed = 0.17;
 }
 
 if (diff == "EXTREME"){
     lives = 1;
-    carSpeed = 0.15;
+    carSpeed = 0.25;
 }
