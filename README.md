@@ -1,5 +1,6 @@
 # 80s Lo-Fi Run
-![Alt text](images/raedme-index.png)
+## Play!
+[![Alt text](images/raedme-index.png)](https://sapienzainteractivegraphicscourse.github.io/final-project-ditommaso-aloisi/)
 
 ## IMPORTANT: note to the player
 The game is heavily dependent on RAM and GPU. There is a high chance it will not run on a low spec PC how it was designed to run. For that matter, we attached below a video demonstration of how the game should work on a normal PC.
