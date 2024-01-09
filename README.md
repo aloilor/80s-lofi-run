@@ -1,4 +1,6 @@
 # 80s Lo-Fi Run
+Explore a visually captivating web-based video game developed using Three.js and WebGL. Navigate a car through an aesthetically designed track, collecting coins, nitro tanks, and avoiding obstacles. This project seamlessly integrates aesthetic appeal with interactive gameplay, showcasing the power of Three.js and WebGL for an engaging user experience.
+
 ## Play!
 [![Alt text](images/raedme-index.png)](https://sapienzainteractivegraphicscourse.github.io/final-project-ditommaso-aloisi/)
 
